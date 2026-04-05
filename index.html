@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nakshatra Rajput | Vision</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <div class="landing-page">
+        <!-- Hero Sticky Container -->
+        <div class="hero-container">
+            <div id="eye-hitbox">
+                <div id="eye-container">
+                    <svg viewBox="0 0 100 60" class="eye-svg">
+                        <defs>
+                            <mask id="eye-mask">
+                                <path class="eye-mask-path" d="M 0 30 Q 50 30 100 30" fill="white" />
+                            </mask>
+                        </defs>
+                        <!-- Lower Lid -->
+                        <path class="eye-lid-lower" d="M 10 30 Q 50 60 90 30" />
+                        <!-- Upper Lid -->
+                        <path class="eye-lid-upper" d="M 10 30 Q 50 0 90 30" />
+                        
+                        <!-- Iris & Pupil Group -->
+                        <g class="eye-track">
+                            <circle class="eye-iris" cx="50" cy="30" r="12" />
+                            <circle class="eye-pupil" cx="50" cy="30" r="4" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Sticky/Moving Name -->
+            <div class="main-name">
+                <h1 id="dynamic-name">NAKSHATRA RAJPUT</h1>
+                <p id="dynamic-tagline">AI SYSTEMS • RAG ARCHITECT</p>
+            </div>
+
+            <!-- Pitch Section (Revealed on Scroll) -->
+            <div class="pitch-container">
+                <div class="pitch-left">
+                    <span class="pitch-label">[ THE_PROBLEM ]</span>
+                    <h2>Your AI Is Held Together With API Calls & Prayers.</h2>
+                    <p>Most “AI products” are thin wrappers around OpenAI. One rate limit, one policy change, one outage — and your entire system folds.</p>
+                    <p class="highlight">I build the opposite: custom-trained models you own, multi-agent orchestration that self-heals, and infrastructure that scales without a single vendor lock-in.</p>
+                </div>
+                <div class="pitch-right">
+                    <!-- Space for future "What others do vs What I do" comparison -->
+                    <div class="comparison-placeholder">
+                        <span class="mono" style="opacity: 0.3;">[ CORE_COMPARISON_DATA_UPLINK_PENDING ]</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <svg viewBox="0 0 24 24" class="arrow-svg">
+                    <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Scrolling Space -->
+        <div class="content-section">
+            <!-- Project Cards will still appear later in the scroll sequence -->
+            <div class="cards-wrapper">
+                <div class="project-card" style="--angle: 0deg;">
+                    <h3>DRIPE</h3>
+                    <p>Drug Repurposing Engine</p>
+                </div>
+                <div class="project-card" style="--angle: 72deg;">
+                    <h3>RESFIT</h3>
+                    <p>RAG Exercise Science</p>
+                </div>
+                <div class="project-card" style="--angle: 144deg;">
+                    <h3>TRANSYS</h3>
+                    <p>WebRTC Translator</p>
+                </div>
+                <div class="project-card" style="--angle: 216deg;">
+                    <h3>AGENTIC</h3>
+                    <p>Patent Retrieval</p>
+                </div>
+                <div class="project-card" style="--angle: 288deg;">
+                    <h3>VISION</h3>
+                    <p>Neural Interfaces</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
