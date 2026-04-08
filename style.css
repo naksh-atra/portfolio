@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:wght@100;300;600;900&family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:wght@100;300;400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap');
 
 :root {
     --bg-color: #121212;
@@ -78,7 +78,8 @@ body {
     left: 0;
     z-index: 100;
     pointer-events: none;
-    transform: translateZ(0); /* Force layer stability */
+    transform: translateZ(0);
+    /* Force layer stability */
 }
 
 #eye-hitbox {
@@ -115,17 +116,20 @@ body {
 }
 
 .eye-pupil {
-    fill: var(--bg-color); /* Maintain contrast for the digital pupil */
+    fill: var(--bg-color);
+    /* Maintain contrast for the digital pupil */
 }
 
-.eye-iris, .eye-pupil {
+.eye-iris,
+.eye-pupil {
     opacity: 0;
     transform: scale(0.6);
     transition: opacity 0.4s ease-in-out, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-origin: center;
 }
 
-.open .eye-iris, .open .eye-pupil {
+.open .eye-iris,
+.open .eye-pupil {
     opacity: 1;
     transform: scale(1);
 }
@@ -141,24 +145,33 @@ body {
 }
 
 #dynamic-name {
+    font-family: 'Inter', sans-serif !important;
     font-size: 2rem;
-    font-weight: 100;
+    font-weight: 500; /* Increased from 100 for better recognition */
     letter-spacing: 1.2rem;
     margin-bottom: 0.5rem;
     white-space: nowrap;
 }
 
 #dynamic-tagline {
+    font-family: 'Inter', sans-serif !important;
     font-size: 0.6rem;
+    font-weight: 400;
     letter-spacing: 0.4rem;
     color: var(--narrative-grey);
     text-transform: uppercase;
+    transition: opacity 0.5s ease;
 }
 
 .scrolled .main-name {
     top: 3rem;
     transform: translateX(-50%) scale(0.6);
     opacity: 0.7;
+}
+
+.scrolled #dynamic-tagline {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Scroll Engine */
@@ -174,7 +187,9 @@ body {
     z-index: 10;
 }
 
-.landing-page::-webkit-scrollbar { display: none; }
+.landing-page::-webkit-scrollbar {
+    display: none;
+}
 
 .scroll-section {
     height: 100vh;
@@ -194,7 +209,8 @@ body {
     width: 100%;
     height: 80vh;
     align-items: center;
-    gap: 450px; /* Essential Eye Clearance */
+    gap: 280px;
+    /* Focused Eye Sanctuary */
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1s var(--easing), transform 1s var(--easing);
@@ -210,7 +226,8 @@ body {
     flex-direction: row-reverse;
 }
 
-.narrative-side, .terminal-side {
+.narrative-side,
+.terminal-side {
     flex: 1;
     padding: 0 2rem;
     z-index: 50;
@@ -224,7 +241,7 @@ body {
 }
 
 .philosophical-pitch {
-    max-width: 500px;
+    max-width: 700px;
 }
 
 .tool-bubbles {
@@ -249,21 +266,49 @@ body {
     color: var(--terminal-teal);
 }
 
+/* Obsidian-Style Graph (Updated) */
+.connector {
+    stroke: var(--eye-color);
+    stroke-width: 0.5;
+    stroke-opacity: 0.15;
+}
+
+.node-circle {
+    fill: none;
+    stroke: var(--eye-color);
+    stroke-width: 1;
+}
+
+.node-label {
+    fill: var(--narrative-grey);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.data-meta {
+    fill: rgba(255, 250, 235, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+}
+
+/* Subtle Entrance Animation */
+@keyframes fadeInGraph {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.graph-content {
+    animation: fadeInGraph 1.5s ease-in-out;
+}
+
 .terminal-side {
-    background: rgba(0, 255, 202, 0.02);
-    border: 1px solid var(--card-border);
-    padding: 2rem;
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.terminal-header {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
-    margin-bottom: 1.5rem;
-    opacity: 0.5;
-}
+/* Headers removed to simplify design as requested */
 
 .terminal-body {
     flex: 1;
@@ -314,7 +359,7 @@ body {
 /* Environment Terminal Aesthetic */
 .terminal-aesthetic {
     padding: 4rem;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     border: 1px solid var(--card-border);
     position: relative;
     max-width: 450px;
@@ -392,6 +437,13 @@ body {
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, 15px); }
+
+    0%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 15px);
+    }
 }

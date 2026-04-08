@@ -84,11 +84,10 @@
         <!-- Section 1: Introduction -->
         <section class="scroll-section" id="hero-section"></section>
 
-        <!-- Section 2: [ LOGIC_AGENCY ] -->
+        <!-- Section 2: [ ABOUT ] -->
         <section class="scroll-section" id="pitch-section">
             <div class="section-content split-pane">
                 <div class="narrative-side philosophical-pitch">
-                    <!-- <span class="mono">[ CORE_ENGINE ]</span> -->
                     <h2 style="font-weight: 900;">The Model is a component, not the system</h2>
                     <p style="font-family: 'Inria Serif', serif; font-size: 1.1rem; line-height: 1.6;">I operate at the
                         intersection of deterministic logic and generative uncertainty. My philosophy is rooted in the
@@ -98,12 +97,58 @@
                         calculated decision.</p>
                 </div>
                 <div class="terminal-side">
-                    <div class="terminal-header">TRACE_v2.0</div>
-                    <div class="terminal-body mono">
-                        <p>> INIT_LANGGRAPH_VM... [OK]</p>
-                        <p>> RECURSION_LIMIT: 03</p>
-                        <p>> ATS_THRESHOLD: 9.5/10</p>
-                        <p>> STATUS: REASONING_LOOP_ACTIVE</p>
+                    <div class="terminal-body" style="width: 100%; height: 100%;">
+                        <svg viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                            <g class="graph-content" transform="translate(80, 80)">
+                                <line class="connector" x1="450" y1="250" x2="420" y2="180" />
+                                <line class="connector" x1="450" y1="250" x2="480" y2="320" />
+                                <line class="connector" x1="450" y1="250" x2="520" y2="240" />
+                                <line class="connector" x1="420" y1="180" x2="480" y2="320" />
+                                <line class="connector" x1="450" y1="250" x2="350" y2="200" />
+                                <line class="connector" x1="350" y1="200" x2="280" y2="150" />
+                                <line class="connector" x1="350" y1="200" x2="270" y2="220" />
+                                <line class="connector" x1="520" y1="240" x2="600" y2="180" />
+                                <line class="connector" x1="600" y1="180" x2="650" y2="140" />
+                                <line class="connector" x1="600" y1="180" x2="680" y2="200" />
+                                <g transform="translate(450, 250)">
+                                    <circle class="node-circle" r="6" stroke-width="1.5" />
+                                    <text class="node-label" x="12" y="4">SYSTEM_ORCHESTRATOR</text>
+                                    <text class="data-meta" x="12" y="15">lat: &lt; 200ms</text>
+                                </g>
+                                <g transform="translate(420, 180)">
+                                    <circle class="node-circle" r="4" />
+                                    <text class="node-label" x="10" y="4">REASONING_LOOP</text>
+                                </g>
+                                <g transform="translate(480, 320)">
+                                    <circle class="node-circle" r="4" />
+                                    <text class="node-label" x="10" y="4">STATE_MANAGER</text>
+                                </g>
+                                <g transform="translate(350, 200)">
+                                    <circle class="node-circle" r="4" />
+                                    <text class="node-label" x="-105" y="4">RAG_VALIDATOR</text>
+                                </g>
+                                <g transform="translate(280, 150)">
+                                    <circle class="node-circle" r="3" />
+                                    <text class="node-label" x="-95" y="4">KNOWLEDGE_BASE</text>
+                                </g>
+                                <g transform="translate(600, 180)">
+                                    <circle class="node-circle" r="4" />
+                                    <text class="node-label" x="10" y="4">GUARDRAIL_L3</text>
+                                </g>
+                                <g transform="translate(700, 350)">
+                                    <circle class="node-circle" r="3" style="stroke-dasharray: 2,2; opacity: 0.5;" />
+                                    <text class="node-label" x="8" y="4" style="opacity: 0.5;">RAW_LLM_L0</text>
+                                </g>
+                                <g transform="translate(400, 50)">
+                                    <circle class="node-circle" r="3" />
+                                    <text class="node-label" x="8" y="4">USER_INPUT</text>
+                                </g>
+                                <g transform="translate(550, 450)">
+                                    <circle class="node-circle" r="3" />
+                                    <text class="node-label" x="8" y="4">AGENT_RESPONSE</text>
+                                </g>
+                            </g>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -113,7 +158,6 @@
         <section class="scroll-section" id="work-section">
             <div class="section-content split-pane">
                 <div class="narrative-side">
-                    <span class="mono">[ DATA_UPLINK ]</span>
                     <h2>RESEARCH_AUGMENTED_GENERATION</h2>
                     <p>B2B API for science-validated workout synthesis, utilizing a dual-API grounding pipeline
                         (PubMed/ScienceDirect).</p>
@@ -125,7 +169,6 @@
                     </div>
                 </div>
                 <div class="terminal-side">
-                    <div class="terminal-header">TRACE_v2.0</div>
                     <div class="terminal-body mono">
                         <p>> SCANNING_PUBMED_SNIPPETS...</p>
                         <p>> VERDICT: GREEN (SCHOENFELD_2016)</p>
@@ -140,7 +183,6 @@
         <section class="scroll-section" id="stack-section">
             <div class="section-content split-pane">
                 <div class="narrative-side">
-                    <span class="mono">[ DATA_UPLINK ]</span>
                     <h2>BIO_GRAPH_NEURAL_NETWORKS</h2>
                     <p>In-silico drug repurposing engine combining GAT (Graph Attention Networks) with MedGemma
                         Chain-of-Thought reasoning.</p>
@@ -153,7 +195,6 @@
                     </div>
                 </div>
                 <div class="terminal-side">
-                    <div class="terminal-header">TRACE_v2.0</div>
                     <div class="terminal-body mono">
                         <p>> GNN_ENGINE: GAT_LAYER_ACTIVE</p>
                         <p>> PREDICTING_LINK: [DRUG] <-> [DISEASE]</p>
