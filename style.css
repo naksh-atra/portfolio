@@ -2,9 +2,9 @@
 
 :root {
     --bg-color: #121212;
-    --eye-color: #fcfcfc;
+    --eye-color: rgba(255, 250, 235, 1);
     --terminal-teal: #00ffca;
-    --narrative-grey: #888;
+    --narrative-grey: rgba(255, 250, 235, 0.5);
     --card-bg: rgba(255, 255, 255, 0.05);
     --card-border: rgba(255, 255, 255, 0.1);
     --transition-speed: 0.8s;
@@ -36,7 +36,7 @@ body {
     position: fixed;
     width: 6px;
     height: 6px;
-    background-color: #fff;
+    background-color: var(--eye-color);
     border-radius: 50%;
     pointer-events: none;
     z-index: 10000;
@@ -108,8 +108,14 @@ body {
     stroke-linecap: round;
 }
 
-.eye-lid-upper, .eye-lid-lower {
-    transition: d 0.4s ease-in-out;
+/* Morphing handled via script.js for frame-sync */
+
+.eye-iris {
+    fill: var(--eye-color);
+}
+
+.eye-pupil {
+    fill: var(--bg-color); /* Maintain contrast for the digital pupil */
 }
 
 .eye-iris, .eye-pupil {
@@ -145,7 +151,7 @@ body {
 #dynamic-tagline {
     font-size: 0.6rem;
     letter-spacing: 0.4rem;
-    color: #888;
+    color: var(--narrative-grey);
     text-transform: uppercase;
 }
 
@@ -232,8 +238,8 @@ body {
 
 .tool-bubbles span {
     display: inline-block;
-    border: 1px solid #444;
-    color: #888;
+    border: 1px solid rgba(255, 250, 235, 0.2);
+    color: var(--narrative-grey);
     font-size: 0.6rem;
     padding: 4px 10px;
     border-radius: 12px;

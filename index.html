@@ -56,9 +56,11 @@
                     </defs>
                     <path class="eye-lid-lower" d="M 10 30 Q 50 60 90 30" />
                     <path class="eye-lid-upper" d="M 10 30 Q 50 0 90 30" />
-                    <g class="eye-track" clip-path="url(#eye-clip)">
-                        <circle class="eye-iris" cx="50" cy="30" r="12" />
-                        <circle class="eye-pupil" cx="50" cy="30" r="4" />
+                    <g class="eye-clipping-boundary" clip-path="url(#eye-clip)">
+                        <g class="eye-track">
+                            <circle class="eye-iris" cx="50" cy="30" r="12" />
+                            <circle class="eye-pupil" cx="50" cy="30" r="4" />
+                        </g>
                     </g>
                 </svg>
             </div>

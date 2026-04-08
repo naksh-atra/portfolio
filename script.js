@@ -20,49 +20,64 @@ document.addEventListener('DOMContentLoaded', () => {
         relational: `<h2>[ RELATIONAL_INTELLIGENCE LOGS ]</h2><p>GNN Link Prediction starting...</p><p>Mapping 5,000+ nodes in Neo4j.</p><p>Cross-referencing MedGemma reasoning chains for zero-shot hypothesis generation.</p>`
     };
 
-    // 2. SVG PATH DATA
-    const CLOSED = "M 10 30 Q 50 30 90 30";
-    const OPEN_UPPER = "M 10 30 Q 50 -10 90 30";
-    const OPEN_LOWER = "M 10 30 Q 50 70 90 30";
-    const FOCUS_UPPER = "M 10 30 Q 50 -18 90 30";
-    const FOCUS_LOWER = "M 10 30 Q 50 78 90 30";
-
-    function updateClip(up, low) {
-        // Construct closed loop for the clipPath: Upper + Lower (reversed)
-        // Upper: M 10 30 Q 50 {up} 90
-        // Lower: Q 50 {low} 10 Z
-        const upParts = up.split(/\s+/);
-        const lowParts = low.split(/\s+/);
-        const upY = upParts[5];
-        const lowY = lowParts[5];
-        // Fixed: Added missing Y coordinates (30) for the end points of the Q curves
-        eyeClipPath.setAttribute('d', `M 10 30 Q 50 ${upY} 90 30 Q 50 ${lowY} 10 30 Z`);
-    }
+    // 2. SVG PATH DATA & STATE
+    const CLOSED_Y = 30;
+    const OPEN_UP_Y = -10;
+    const OPEN_LOW_Y = 70;
+    const FOCUS_UP_Y = -18;
+    const FOCUS_LOW_Y = 78;
 
     let state = {
         in_contact: false,
         active_section: 'hero-section',
-        inactivityTimer: null
+        inactivityTimer: null,
+        currentUpY: 30,
+        currentLowY: 30,
+        animating: false
     };
+
+    function updateClip(upY, lowY) {
+        eyeClipPath.setAttribute('d', `M 10 30 Q 50 ${upY} 90 30 Q 50 ${lowY} 10 30 Z`);
+    }
+
+    function morphLids(targetUpY, targetLowY, duration = 400) {
+        const startUpY = state.currentUpY;
+        const startLowY = state.currentLowY;
+        const startTime = performance.now();
+
+        function step(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            // Cubic easeInOut
+            const ease = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            
+            state.currentUpY = startUpY + (targetUpY - startUpY) * ease;
+            state.currentLowY = startLowY + (targetLowY - startLowY) * ease;
+            
+            eyeLidUpper.setAttribute('d', `M 10 30 Q 50 ${state.currentUpY} 90 30`);
+            eyeLidLower.setAttribute('d', `M 10 30 Q 50 ${state.currentLowY} 90 30`);
+            updateClip(state.currentUpY, state.currentLowY);
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            }
+        }
+        requestAnimationFrame(step);
+    }
 
     // 3. SENTINEL CORE
     function openEye(isFocus = false) {
         if (!eyeContainer.classList.contains('open') || isFocus) {
             eyeContainer.classList.add('open');
-            const upper = isFocus ? FOCUS_UPPER : OPEN_UPPER;
-            const lower = isFocus ? FOCUS_LOWER : OPEN_LOWER;
-            eyeLidUpper.setAttribute('d', upper);
-            eyeLidLower.setAttribute('d', lower);
-            updateClip(upper, lower);
+            const up = isFocus ? FOCUS_UP_Y : OPEN_UP_Y;
+            const low = isFocus ? FOCUS_LOW_Y : OPEN_LOW_Y;
+            morphLids(up, low, 600);
         }
     }
 
     function closeEye() {
         if (eyeContainer.classList.contains('open')) {
             eyeContainer.classList.remove('open');
-            eyeLidUpper.setAttribute('d', CLOSED);
-            eyeLidLower.setAttribute('d', CLOSED);
-            updateClip(CLOSED, CLOSED);
+            morphLids(CLOSED_Y, CLOSED_Y, 600);
         }
     }
 
@@ -72,7 +87,29 @@ document.addEventListener('DOMContentLoaded', () => {
         state.inactivityTimer = setTimeout(closeEye, 3000);
     }
 
-    // 4. INTERACTION LISTENERS
+    // 4. PERIODIC BLINK
+    function blink() {
+        if (eyeContainer.classList.contains('open') && !state.animating) {
+            // Momentary close
+            const prevUp = state.in_contact ? FOCUS_UP_Y : OPEN_UP_Y;
+            const prevLow = state.in_contact ? FOCUS_LOW_Y : OPEN_LOW_Y;
+            
+            morphLids(CLOSED_Y, CLOSED_Y, 300);
+
+            // Reopen after delay
+            setTimeout(() => {
+                if (eyeContainer.classList.contains('open')) {
+                    const up = state.in_contact ? FOCUS_UP_Y : OPEN_UP_Y;
+                    const low = state.in_contact ? FOCUS_LOW_Y : OPEN_LOW_Y;
+                    morphLids(up, low, 300);
+                }
+            }, 450);
+        }
+    }
+
+    setInterval(blink, 5000);
+
+    // 5. INTERACTION LISTENERS
     window.addEventListener('mousemove', (e) => {
         cursor.style.left = `${e.clientX}px`;
         cursor.style.top = `${e.clientY}px`;
@@ -82,13 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gaze with section-based bias
         const mouseXPercent = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
         const mouseYPercent = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-        
+
         const dampingLimit = state.in_contact ? 35 : 20;
-        
+
         // Pupil damping logic (Purely relative to center)
         const trackX = (mouseXPercent * dampingLimit);
         const trackY = (mouseYPercent * 15);
-        
+
         eyeTrack.style.transform = `translate(${trackX}px, ${trackY}px)`;
     });
 
@@ -121,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 state.active_section = entry.target.id;
                 entry.target.classList.add('in-focus');
-                
+
                 if (entry.target.id !== 'hero-section') {
                     document.body.classList.add('scrolled');
                     scrollIndicator.classList.add('hidden');
