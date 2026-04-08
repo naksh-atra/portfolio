@@ -1,96 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nakshatra Rajput | Vision</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="cursor"></div>
 
-    <div class="landing-page">
-        <!-- Hero Sticky Container -->
-        <div class="hero-container">
-            <div id="eye-hitbox">
-                <div id="eye-container">
-                    <svg viewBox="0 0 100 60" class="eye-svg">
-                        <defs>
-                            <mask id="eye-mask">
-                                <path class="eye-mask-path" d="M 0 30 Q 50 30 100 30" fill="white" />
-                            </mask>
-                        </defs>
-                        <!-- Lower Lid -->
-                        <path class="eye-lid-lower" d="M 10 30 Q 50 60 90 30" />
-                        <!-- Upper Lid -->
-                        <path class="eye-lid-upper" d="M 10 30 Q 50 0 90 30" />
-                        
-                        <!-- Iris & Pupil Group -->
-                        <g class="eye-track">
-                            <circle class="eye-iris" cx="50" cy="30" r="12" />
-                            <circle class="eye-pupil" cx="50" cy="30" r="4" />
-                        </g>
-                    </svg>
-                </div>
-            </div>
+    <!-- Fixed Sidebar Socials -->
+    <div class="fixed-socials">
+        <a href="https://github.com/naksh-atra" target="_blank" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="social-icon">
+                <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22">
+                </path>
+            </svg>
+        </a>
+        <a href="https://linkedin.com/in/nakshatra-rajput" target="_blank" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="social-icon">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+        </a>
+        <a href="https://x.com/SatyaNaaksh" target="_blank" title="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                <path
+                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.293 19.494h2.039L6.482 3.239H4.293l13.315 17.408z" />
+            </svg>
+        </a>
+        <a href="mailto:nakshatra.rajput@outlook.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="social-icon">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </a>
+    </div>
 
-            <!-- Sticky/Moving Name -->
-            <div class="main-name">
-                <h1 id="dynamic-name">NAKSHATRA RAJPUT</h1>
-                <p id="dynamic-tagline">AI SYSTEMS • RAG ARCHITECT</p>
-            </div>
-
-            <!-- Pitch Section (Revealed on Scroll) -->
-            <div class="pitch-container">
-                <div class="pitch-left">
-                    <span class="pitch-label">[ THE_PROBLEM ]</span>
-                    <h2>Your AI Is Held Together With API Calls & Prayers.</h2>
-                    <p>Most “AI products” are thin wrappers around OpenAI. One rate limit, one policy change, one outage — and your entire system folds.</p>
-                    <p class="highlight">I build the opposite: custom-trained models you own, multi-agent orchestration that self-heals, and infrastructure that scales without a single vendor lock-in.</p>
-                </div>
-                <div class="pitch-right">
-                    <!-- Space for future "What others do vs What I do" comparison -->
-                    <div class="comparison-placeholder">
-                        <span class="mono" style="opacity: 0.3;">[ CORE_COMPARISON_DATA_UPLINK_PENDING ]</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="scroll-indicator">
-                <svg viewBox="0 0 24 24" class="arrow-svg">
-                    <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- The Eye (Fixed Global Element) -->
+    <div class="hero-container">
+        <div id="eye-hitbox">
+            <div id="eye-container">
+                <svg viewBox="0 0 100 60" class="eye-svg">
+                    <defs>
+                        <clipPath id="eye-clip">
+                            <path class="eye-mask-path" d="M 10 30 Q 50 30 90 30 Q 50 30 10 30 Z" />
+                        </clipPath>
+                    </defs>
+                    <path class="eye-lid-lower" d="M 10 30 Q 50 60 90 30" />
+                    <path class="eye-lid-upper" d="M 10 30 Q 50 0 90 30" />
+                    <g class="eye-track" clip-path="url(#eye-clip)">
+                        <circle class="eye-iris" cx="50" cy="30" r="12" />
+                        <circle class="eye-pupil" cx="50" cy="30" r="4" />
+                    </g>
                 </svg>
             </div>
         </div>
 
-        <!-- Scrolling Space -->
-        <div class="content-section">
-            <!-- Project Cards will still appear later in the scroll sequence -->
-            <div class="cards-wrapper">
-                <div class="project-card" style="--angle: 0deg;">
-                    <h3>DRIPE</h3>
-                    <p>Drug Repurposing Engine</p>
+        <div class="main-name">
+            <h1 id="dynamic-name">NAKSHATRA RAJPUT</h1>
+            <p id="dynamic-tagline">AI SYSTEMS</p>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" class="arrow-svg">
+                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Scroll-Snap Container -->
+    <div class="landing-page">
+        <!-- Section 1: Introduction -->
+        <section class="scroll-section" id="hero-section"></section>
+
+        <!-- Section 2: [ LOGIC_AGENCY ] -->
+        <section class="scroll-section" id="pitch-section">
+            <div class="section-content split-pane">
+                <div class="narrative-side">
+                    <span class="mono">[ DATA_UPLINK ]</span>
+                    <h2>AGENTIC_ORCHESTRATION</h2>
+                    <p>Autonomous 9-node state machine for recursive document synthesis and recruiter-logic simulation.
+                    </p>
+                    <div class="tool-bubbles">
+                        <span>LangGraph</span>
+                        <span>Groq_70B</span>
+                        <span>n8n</span>
+                        <span>Pure_Python_Heuristics</span>
+                    </div>
                 </div>
-                <div class="project-card" style="--angle: 72deg;">
-                    <h3>RESFIT</h3>
-                    <p>RAG Exercise Science</p>
-                </div>
-                <div class="project-card" style="--angle: 144deg;">
-                    <h3>TRANSYS</h3>
-                    <p>WebRTC Translator</p>
-                </div>
-                <div class="project-card" style="--angle: 216deg;">
-                    <h3>AGENTIC</h3>
-                    <p>Patent Retrieval</p>
-                </div>
-                <div class="project-card" style="--angle: 288deg;">
-                    <h3>VISION</h3>
-                    <p>Neural Interfaces</p>
+                <div class="terminal-side">
+                    <div class="terminal-header">TRACE_v2.0</div>
+                    <div class="terminal-body mono">
+                        <p>> INIT_LANGGRAPH_VM... [OK]</p>
+                        <p>> RECURSION_LIMIT: 03</p>
+                        <p>> ATS_THRESHOLD: 9.5/10</p>
+                        <p>> STATUS: REASONING_LOOP_ACTIVE</p>
+                    </div>
+                    <button class="deep-dive-trigger" data-project="logic">> [ VIEW_LOGS ]</button>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Section 3: [ PHYSIOLOGICAL_COMPUTE ] -->
+        <section class="scroll-section" id="work-section">
+            <div class="section-content split-pane">
+                <div class="narrative-side">
+                    <span class="mono">[ DATA_UPLINK ]</span>
+                    <h2>RESEARCH_AUGMENTED_GENERATION</h2>
+                    <p>B2B API for science-validated workout synthesis, utilizing a dual-API grounding pipeline
+                        (PubMed/ScienceDirect).</p>
+                    <div class="tool-bubbles">
+                        <span>FastAPI</span>
+                        <span>Perplexity_Sonar</span>
+                        <span>Tavily</span>
+                        <span>MongoDB_Atlas</span>
+                    </div>
+                </div>
+                <div class="terminal-side">
+                    <div class="terminal-header">TRACE_v2.0</div>
+                    <div class="terminal-body mono">
+                        <p>> SCANNING_PUBMED_SNIPPETS...</p>
+                        <p>> VERDICT: GREEN (SCHOENFELD_2016)</p>
+                        <p>> CACHE_HIT_RATE: 92%</p>
+                    </div>
+                    <button class="deep-dive-trigger" data-project="comp">> [ VIEW_LOGS ]</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: [ RELATIONAL_INTELLIGENCE ] -->
+        <section class="scroll-section" id="stack-section">
+            <div class="section-content split-pane">
+                <div class="narrative-side">
+                    <span class="mono">[ DATA_UPLINK ]</span>
+                    <h2>BIO_GRAPH_NEURAL_NETWORKS</h2>
+                    <p>In-silico drug repurposing engine combining GAT (Graph Attention Networks) with MedGemma
+                        Chain-of-Thought reasoning.</p>
+                    <div class="tool-bubbles">
+                        <span>Neo4j</span>
+                        <span>Torch_Geometric</span>
+                        <span>FAISS</span>
+                        <span>GNN</span>
+                        <span>Llama_3.2</span>
+                    </div>
+                </div>
+                <div class="terminal-side">
+                    <div class="terminal-header">TRACE_v2.0</div>
+                    <div class="terminal-body mono">
+                        <p>> GNN_ENGINE: GAT_LAYER_ACTIVE</p>
+                        <p>> PREDICTING_LINK: [DRUG] <-> [DISEASE]</p>
+                        <p>> DIMENSIONS: 384 (MiniLM-L6)</p>
+                    </div>
+                    <button class="deep-dive-trigger" data-project="relational">> [ VIEW_LOGS ]</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: The Workflow Environment -->
+        <section class="scroll-section" id="environment">
+            <div class="section-content terminal-aesthetic">
+                <div class="status-overlay mono">[ STATUS: MCP_UPLINK_ACTIVE | LATENCY: <1ms ]</div>
+                        <div class="terminal-body">
+                            <h2>Integrated Agentic Workflow.</h2>
+                            <p>Developing within a product-agnostic, MCP-standardized environment. I orchestrate
+                                Headless IDE Agents and Context-Aware Local RAG to automate the bridge between complex
+                                system architecture and production deployment.</p>
+                        </div>
+                </div>
+        </section>
+
+        <!-- Section 6: Contact -->
+        <section class="scroll-section" id="contact-section">
+            <div class="section-content contact-final">
+                <h2>Ready to build infrastructure that lasts?</h2>
+                <div class="contact-links">
+                    <a href="https://github.com/naksh-atra" target="_blank" class="contact-label">[ GITHUB ]</a>
+                    <a href="https://linkedin.com/in/nakshatra-rajput" target="_blank" class="contact-label">[ LINKEDIN
+                        ]</a>
+                    <a href="https://x.com/SatyaNaaksh" target="_blank" class="contact-label">[ X_TWITTER ]</a>
+                    <a href="mailto:nakshatra.rajput@outlook.com" class="contact-label">[ EMAIL ]</a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
