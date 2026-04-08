@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;600;900&family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:wght@100;300;600;900&family=JetBrains+Mono:wght@400&display=swap');
 
 :root {
     --bg-color: #121212;
@@ -205,8 +205,8 @@ body {
     transform: translateY(0);
 }
 
-/* Alternating Orientation */
-.scroll-section:nth-child(even) .split-pane {
+/* Alternate Left/Right orientation, but force Section 2 (pitch-section) to stay Left-Text */
+.scroll-section:nth-child(even):not(#pitch-section) .split-pane {
     flex-direction: row-reverse;
 }
 
@@ -223,10 +223,8 @@ body {
     letter-spacing: -0.05em;
 }
 
-.narrative-side p {
-    color: var(--narrative-grey);
-    font-size: 0.95rem;
-    line-height: 1.6;
+.philosophical-pitch {
+    max-width: 500px;
 }
 
 .tool-bubbles {
