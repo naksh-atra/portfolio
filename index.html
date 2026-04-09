@@ -1,91 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nakshatra Rajput | Vision</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="cursor"></div>
 
-    <div class="landing-page">
-        <!-- Hero Sticky Container -->
-        <div class="hero-container">
-            <div id="eye-hitbox">
-                <div id="eye-container">
-                    <svg viewBox="0 0 100 60" class="eye-svg">
-                        <defs>
-                            <mask id="eye-mask">
-                                <path class="eye-mask-path" d="M 0 30 Q 50 30 100 30" fill="white" />
-                            </mask>
-                        </defs>
-                        <!-- Lower Lid -->
-                        <path class="eye-lid-lower" d="M 10 30 Q 50 60 90 30" />
-                        <!-- Upper Lid -->
-                        <path class="eye-lid-upper" d="M 10 30 Q 50 0 90 30" />
-                        
-                        <!-- Iris & Pupil Group -->
+    <!-- Fixed Sidebar Socials -->
+    <div class="fixed-socials">
+        <a href="https://github.com/naksh-atra" target="_blank" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="social-icon">
+                <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22">
+                </path>
+            </svg>
+        </a>
+        <a href="https://linkedin.com/in/nakshatra-rajput" target="_blank" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="social-icon">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+        </a>
+        <a href="https://x.com/SatyaNaaksh" target="_blank" title="X (Twitter)">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="social-icon">
+                <path
+                    d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.293 19.494h2.039L6.482 3.239H4.293l13.315 17.408z" />
+            </svg>
+        </a>
+        <a href="mailto:nakshatra.rajput@outlook.com" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" class="social-icon">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </a>
+    </div>
+
+    <!-- The Eye (Fixed Global Element) -->
+    <div class="hero-container">
+        <div id="eye-hitbox">
+            <div id="eye-container">
+                <svg viewBox="0 0 100 60" class="eye-svg">
+                    <defs>
+                        <clipPath id="eye-clip">
+                            <path class="eye-mask-path" d="M 10 30 Q 50 30 90 30 Q 50 30 10 30 Z" />
+                        </clipPath>
+                    </defs>
+                    <path class="eye-lid-lower" d="M 10 30 Q 50 60 90 30" />
+                    <path class="eye-lid-upper" d="M 10 30 Q 50 0 90 30" />
+                    <g class="eye-clipping-boundary" clip-path="url(#eye-clip)">
                         <g class="eye-track">
                             <circle class="eye-iris" cx="50" cy="30" r="12" />
                             <circle class="eye-pupil" cx="50" cy="30" r="4" />
                         </g>
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Sticky/Moving Name -->
-            <div class="main-name">
-                <h1 id="dynamic-name">NAKSHATRA RAJPUT</h1>
-                <p id="dynamic-tagline">AI SYSTEMS • RAG ARCHITECT</p>
-            </div>
-
-            <!-- Pitch Section (Revealed on Scroll) -->
-            <div class="pitch-container">
-                <div class="pitch-left">
-                    <span class="pitch-label">[ THE_PROBLEM ]</span>
-                    <h2>Your AI Is Held Together With API Calls & Prayers.</h2>
-                    <p>Most “AI products” are thin wrappers around OpenAI. One rate limit, one policy change, one outage — and your entire system folds.</p>
-                    <p class="highlight">I build the opposite: custom-trained models you own, multi-agent orchestration that self-heals, and infrastructure that scales without a single vendor lock-in.</p>
-                </div>
-                <div class="pitch-right">
-                    <!-- Space for future "What others do vs What I do" comparison -->
-                    <div class="comparison-placeholder">
-                        <span class="mono" style="opacity: 0.3;">[ CORE_COMPARISON_DATA_UPLINK_PENDING ]</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="scroll-indicator">
-                <svg viewBox="0 0 24 24" class="arrow-svg">
-                    <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
                 </svg>
             </div>
         </div>
 
-        <!-- Scrolling Space -->
-        <div class="content-section">
-            <!-- Project Cards will still appear later in the scroll sequence -->
-            <div class="cards-wrapper">
-                <div class="project-card" style="--angle: 0deg;">
-                    <h3>DRIPE</h3>
-                    <p>Drug Repurposing Engine</p>
+        <div class="main-name">
+            <h1 id="dynamic-name">NAKSHATRA RAJPUT</h1>
+            <p id="dynamic-tagline">AI SYSTEMS</p>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" class="arrow-svg">
+                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Scroll-Snap Container -->
+    <div class="landing-page">
+        <!-- Section 1: Introduction -->
+        <section class="scroll-section" id="hero-section"></section>
+
+        <!-- Section 2: [ ABOUT ] -->
+        <section class="scroll-section" id="pitch-section">
+            <div class="section-content split-pane">
+                <div class="narrative-side philosophical-pitch">
+                    <h2 style="font-weight: 900;">The Model is a component, not the system</h2>
+                    <p style="font-family: 'Inria Serif', serif; font-size: 1.1rem; line-height: 1.6;">I operate at the
+                        intersection of deterministic logic and generative uncertainty. My philosophy is rooted in the
+                        "Invisible Backend" - the orchestration layers and state-management protocols that transform raw
+                        models into reliable systems. <br><br>No wrappers, I architect agentic ecosystems that reason,
+                        verify and adapt. Transparent, research-grounded infrastructure that treats every token as a
+                        calculated decision.</p>
                 </div>
-                <div class="project-card" style="--angle: 72deg;">
-                    <h3>RESFIT</h3>
-                    <p>RAG Exercise Science</p>
+                <div class="terminal-side">
+                    <div class="terminal-body" style="width: 100%; height: 100%;">
+                        <svg viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                            <g class="graph-content" transform="translate(80, 80)">
+                                <line class="connector" x1="450" y1="250" x2="420" y2="180" />
+                                <line class="connector" x1="450" y1="250" x2="480" y2="320" />
+                                <line class="connector" x1="450" y1="250" x2="520" y2="240" />
+                                <line class="connector" x1="420" y1="180" x2="480" y2="320" />
+                                <line class="connector" x1="450" y1="250" x2="350" y2="200" />
+                                <line class="connector" x1="350" y1="200" x2="280" y2="150" />
+                                <line class="connector" x1="350" y1="200" x2="270" y2="220" />
+                                <line class="connector" x1="520" y1="240" x2="600" y2="180" />
+                                <line class="connector" x1="600" y1="180" x2="650" y2="140" />
+                                <line class="connector" x1="600" y1="180" x2="680" y2="200" />
+                                <g transform="translate(450, 250)">
+                                    <circle class="node-circle" r="6" stroke-width="1.5" />
+                                    <text class="node-label" x="12" y="4">SYSTEM_ORCHESTRATOR</text>
+                                    <text class="data-meta" x="12" y="15">lat: &lt; 200ms</text>
+                                </g>
+                                <g transform="translate(420, 180)">
+                                    <circle class="node-circle" r="4" />
+                                    <text class="node-label" x="10" y="4">REASONING_LOOP</text>
+                                </g>
+                                <g transform="translate(480, 320)">
+                                    <circle class="node-circle" r="4" />
+                                    <text class="node-label" x="10" y="4">STATE_MANAGER</text>
+                                </g>
+                                <g transform="translate(350, 200)">
+                                    <circle class="node-circle" r="4" />
+                                    <text class="node-label" x="-105" y="4">RAG_VALIDATOR</text>
+                                </g>
+                                <g transform="translate(280, 150)">
+                                    <circle class="node-circle" r="3" />
+                                    <text class="node-label" x="-95" y="4">KNOWLEDGE_BASE</text>
+                                </g>
+                                <g transform="translate(600, 180)">
+                                    <circle class="node-circle" r="4" />
+                                    <text class="node-label" x="10" y="4">GUARDRAIL_L3</text>
+                                </g>
+                                <g transform="translate(700, 350)">
+                                    <circle class="node-circle" r="3" style="stroke-dasharray: 2,2; opacity: 0.5;" />
+                                    <text class="node-label" x="8" y="4" style="opacity: 0.5;">RAW_LLM_L0</text>
+                                </g>
+                                <g transform="translate(400, 50)">
+                                    <circle class="node-circle" r="3" />
+                                    <text class="node-label" x="8" y="4">USER_INPUT</text>
+                                </g>
+                                <g transform="translate(550, 450)">
+                                    <circle class="node-circle" r="3" />
+                                    <text class="node-label" x="8" y="4">AGENT_RESPONSE</text>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
                 </div>
-                <div class="project-card" style="--angle: 144deg;">
-                    <h3>TRANSYS</h3>
-                    <p>WebRTC Translator</p>
+            </div>
+        </section>
+
+        <!-- Section 3: [ PHYSIOLOGICAL_COMPUTE ] -->
+        <section class="scroll-section" id="work-section">
+            <div class="section-content split-pane" style="flex-direction: row-reverse;">
+                <div class="narrative-side">
+                    <h2>Deterministic Exercise Prescription Engine</h2>
+                    <p class="philosophical-pitch">A production-deployed system that bridges the gap between longitudinal exercise science and personalized programming. It utilizes an architectural hard-block to ensure every prescription remains grounded in 2023–2025 meta-analyses rather than LLM hallucinations.</p>
+                    <div class="tool-bubbles">
+                        <span>Exercise_Science</span>
+                        <span>Meta_Analysis</span>
+                        <span>Grounding_Engine</span>
+                        <span>YAML_Logic</span>
+                    </div>
+                    <div class="inspect-trigger" id="inspect-resfit">+</div>
                 </div>
-                <div class="project-card" style="--angle: 216deg;">
-                    <h3>AGENTIC</h3>
-                    <p>Patent Retrieval</p>
+                <div class="terminal-side">
+                    <svg viewBox="0 0 500 400" style="width: 100%; height: auto; opacity: 0.8;">
+                        <!-- Hard-Block Architecture Visual -->
+                        <rect x="50" y="150" width="120" height="80" rx="8" class="node-circle" />
+                        <text x="65" y="195" class="node-label" style="font-size: 12px;">INPUT_VECTOR</text>
+                        
+                        <line x1="170" y1="190" x2="250" y2="190" class="connector" />
+                        
+                        <rect x="250" y="50" width="200" height="280" rx="20" class="node-circle" stroke-dasharray="8,4" />
+                        <text x="280" y="40" class="node-label" style="font-size: 14px; opacity: 0.5;">HARD_BLOCK_CORE</text>
+                        
+                        <circle cx="350" cy="150" r="40" class="node-circle" />
+                        <text x="325" y="155" class="node-label" style="font-size: 10px;">LOGIC_GATES</text>
+                        
+                        <path d="M 350 190 L 350 260" class="connector" />
+                        <rect x="290" y="260" width="120" height="60" rx="8" class="node-circle" />
+                        <text x="305" y="295" class="node-label" style="font-size: 12px;">PRESCRIPTION</text>
+                    </svg>
                 </div>
-                <div class="project-card" style="--angle: 288deg;">
-                    <h3>VISION</h3>
-                    <p>Neural Interfaces</p>
+            </div>
+        </section>
+
+        <!-- Section 4: [ RELATIONAL_INTELLIGENCE ] -->
+        <section class="scroll-section" id="stack-section">
+            <div class="section-content split-pane">
+                <div class="narrative-side">
+                    <h2>BIO_GRAPH_NEURAL_NETWORKS</h2>
+                    <p>In-silico drug repurposing engine combining GAT (Graph Attention Networks) with MedGemma
+                        Chain-of-Thought reasoning.</p>
+                    <div class="tool-bubbles">
+                        <span>Neo4j</span>
+                        <span>Torch_Geometric</span>
+                        <span>FAISS</span>
+                        <span>GNN</span>
+                        <span>Llama_3.2</span>
+                    </div>
+                </div>
+                <div class="terminal-side">
+                    <div class="terminal-body mono">
+                        <p>> GNN_ENGINE: GAT_LAYER_ACTIVE</p>
+                        <p>> PREDICTING_LINK: [DRUG] <-> [DISEASE]</p>
+                        <p>> DIMENSIONS: 384 (MiniLM-L6)</p>
+                    </div>
+                    <button class="deep-dive-trigger" data-project="relational">> [ VIEW_LOGS ]</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: The Workflow Environment -->
+        <section class="scroll-section" id="environment">
+            <div class="section-content terminal-aesthetic">
+                <div class="status-overlay mono">[ STATUS: MCP_UPLINK_ACTIVE | LATENCY: <1ms ]</div>
+                        <div class="terminal-body">
+                            <h2>Integrated Agentic Workflow.</h2>
+                            <p>Developing within a product-agnostic, MCP-standardized environment. I orchestrate
+                                Headless IDE Agents and Context-Aware Local RAG to automate the bridge between complex
+                                system architecture and production deployment.</p>
+                        </div>
+                </div>
+        </section>
+
+        <!-- Section 6: Contact -->
+        <section class="scroll-section" id="contact-section">
+            <div class="section-content contact-final">
+                <h2>Ready to build infrastructure that lasts?</h2>
+                <div class="contact-links">
+                    <a href="https://github.com/naksh-atra" target="_blank" class="contact-label">[ GITHUB ]</a>
+                    <a href="https://linkedin.com/in/nakshatra-rajput" target="_blank" class="contact-label">[ LINKEDIN
+                        ]</a>
+                    <a href="https://x.com/SatyaNaaksh" target="_blank" class="contact-label">[ X_TWITTER ]</a>
+                    <a href="mailto:nakshatra.rajput@outlook.com" class="contact-label">[ EMAIL ]</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Technical Inspect Overlay -->
+    <div class="inspect-backdrop" id="inspect-backdrop"></div>
+    <div class="inspect-overlay-container" id="inspect-overlay">
+        <div class="inspect-content">
+            <h3 class="mono" style="margin-bottom: 2rem; color: var(--terminal-teal);">[ NODE_INSPECT_v3.0 ]</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem;">
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">KNOWLEDGE_GRAPH</h4>
+                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 300px;">
+                        <line x1="100" y1="100" x2="50" y2="50" class="connector" stroke-opacity="0.5" />
+                        <line x1="100" y1="100" x2="150" y2="50" class="connector" stroke-opacity="0.5" />
+                        <circle cx="100" cy="100" r="4" class="node-circle" />
+                        <text x="110" y="105" class="node-label" style="font-size: 8px;">PRESCRIPTION_GATES</text>
+                        <circle cx="50" cy="50" r="3" class="node-circle" />
+                        <text x="10" y="45" class="node-label" style="font-size: 6px;">Schoenfeld_2016</text>
+                        <circle cx="150" cy="50" r="3" class="node-circle" />
+                        <text x="155" y="45" class="node-label" style="font-size: 6px;">Seiler_2010</text>
+                    </svg>
+                    
+                    <h4 class="mono" style="margin: 2rem 0 1rem;">THE_SCIENCE</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--narrative-grey);">
+                        Zone 2 Aerobic Base protocols derived from Seiler’s Polarized model. 
+                        Hypertrophy volume capped at 20 sets/week to prevent CNS fatigue 
+                        grounded in Schoenfeld’s 2017 meta-analysis.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">LOGIC_MANIFEST (endurance.yaml)</h4>
+                    <pre class="mono" style="background: rgba(0,0,0,0.3); padding: 1.5rem; border: 1px solid var(--card-border); color: var(--terminal-teal); font-size: 0.8rem;">
+parameters:
+  intensity:
+    metric: RPE
+    value: 4
+    rir: null # No fatigue target for Z2
+  tempo: "3010"
+  cadence: 80-90
+  rest: 0
+                     </pre>
+
+                    <h4 class="mono" style="margin: 2rem 0 1rem;">SAFETY_GUARDRAILS</h4>
+                    <pre class="mono" style="background: rgba(255, 0, 0, 0.05); padding: 1.5rem; border: 1px solid rgba(255, 0, 0, 0.2); color: #ff5f5f; font-size: 0.8rem;">
+# Default-to-Deny Architecture
+def validate_science(verdict):
+    if verdict not in ["GREEN", "YELLOW"]:
+        raise HTTPException(status_code=403)
+    return True
+
+# Error Fallback
+except SystemFailure:
+    return VERDICT_RED
+                    </pre>
                 </div>
             </div>
         </div>
@@ -93,4 +304,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
