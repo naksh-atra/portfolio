@@ -156,25 +156,36 @@
 
         <!-- Section 3: [ PHYSIOLOGICAL_COMPUTE ] -->
         <section class="scroll-section" id="work-section">
-            <div class="section-content split-pane">
+            <div class="section-content split-pane" style="flex-direction: row-reverse;">
                 <div class="narrative-side">
-                    <h2>RESEARCH_AUGMENTED_GENERATION</h2>
-                    <p>B2B API for science-validated workout synthesis, utilizing a dual-API grounding pipeline
-                        (PubMed/ScienceDirect).</p>
+                    <h2>Deterministic Exercise Prescription Engine</h2>
+                    <p class="philosophical-pitch">A production-deployed system that bridges the gap between longitudinal exercise science and personalized programming. It utilizes an architectural hard-block to ensure every prescription remains grounded in 2023–2025 meta-analyses rather than LLM hallucinations.</p>
                     <div class="tool-bubbles">
-                        <span>FastAPI</span>
-                        <span>Perplexity_Sonar</span>
-                        <span>Tavily</span>
-                        <span>MongoDB_Atlas</span>
+                        <span>Exercise_Science</span>
+                        <span>Meta_Analysis</span>
+                        <span>Grounding_Engine</span>
+                        <span>YAML_Logic</span>
                     </div>
+                    <div class="inspect-trigger" id="inspect-resfit">+</div>
                 </div>
                 <div class="terminal-side">
-                    <div class="terminal-body mono">
-                        <p>> SCANNING_PUBMED_SNIPPETS...</p>
-                        <p>> VERDICT: GREEN (SCHOENFELD_2016)</p>
-                        <p>> CACHE_HIT_RATE: 92%</p>
-                    </div>
-                    <button class="deep-dive-trigger" data-project="comp">> [ VIEW_LOGS ]</button>
+                    <svg viewBox="0 0 500 400" style="width: 100%; height: auto; opacity: 0.8;">
+                        <!-- Hard-Block Architecture Visual -->
+                        <rect x="50" y="150" width="120" height="80" rx="8" class="node-circle" />
+                        <text x="65" y="195" class="node-label" style="font-size: 12px;">INPUT_VECTOR</text>
+                        
+                        <line x1="170" y1="190" x2="250" y2="190" class="connector" />
+                        
+                        <rect x="250" y="50" width="200" height="280" rx="20" class="node-circle" stroke-dasharray="8,4" />
+                        <text x="280" y="40" class="node-label" style="font-size: 14px; opacity: 0.5;">HARD_BLOCK_CORE</text>
+                        
+                        <circle cx="350" cy="150" r="40" class="node-circle" />
+                        <text x="325" y="155" class="node-label" style="font-size: 10px;">LOGIC_GATES</text>
+                        
+                        <path d="M 350 190 L 350 260" class="connector" />
+                        <rect x="290" y="260" width="120" height="60" rx="8" class="node-circle" />
+                        <text x="305" y="295" class="node-label" style="font-size: 12px;">PRESCRIPTION</text>
+                    </svg>
                 </div>
             </div>
         </section>
@@ -231,6 +242,64 @@
                 </div>
             </div>
         </section>
+    </div>
+
+    <!-- Technical Inspect Overlay -->
+    <div class="inspect-backdrop" id="inspect-backdrop"></div>
+    <div class="inspect-overlay-container" id="inspect-overlay">
+        <div class="inspect-content">
+            <h3 class="mono" style="margin-bottom: 2rem; color: var(--terminal-teal);">[ NODE_INSPECT_v3.0 ]</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem;">
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">KNOWLEDGE_GRAPH</h4>
+                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 300px;">
+                        <line x1="100" y1="100" x2="50" y2="50" class="connector" stroke-opacity="0.5" />
+                        <line x1="100" y1="100" x2="150" y2="50" class="connector" stroke-opacity="0.5" />
+                        <circle cx="100" cy="100" r="4" class="node-circle" />
+                        <text x="110" y="105" class="node-label" style="font-size: 8px;">PRESCRIPTION_GATES</text>
+                        <circle cx="50" cy="50" r="3" class="node-circle" />
+                        <text x="10" y="45" class="node-label" style="font-size: 6px;">Schoenfeld_2016</text>
+                        <circle cx="150" cy="50" r="3" class="node-circle" />
+                        <text x="155" y="45" class="node-label" style="font-size: 6px;">Seiler_2010</text>
+                    </svg>
+                    
+                    <h4 class="mono" style="margin: 2rem 0 1rem;">THE_SCIENCE</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--narrative-grey);">
+                        Zone 2 Aerobic Base protocols derived from Seiler’s Polarized model. 
+                        Hypertrophy volume capped at 20 sets/week to prevent CNS fatigue 
+                        grounded in Schoenfeld’s 2017 meta-analysis.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">LOGIC_MANIFEST (endurance.yaml)</h4>
+                    <pre class="mono" style="background: rgba(0,0,0,0.3); padding: 1.5rem; border: 1px solid var(--card-border); color: var(--terminal-teal); font-size: 0.8rem;">
+parameters:
+  intensity:
+    metric: RPE
+    value: 4
+    rir: null # No fatigue target for Z2
+  tempo: "3010"
+  cadence: 80-90
+  rest: 0
+                     </pre>
+
+                    <h4 class="mono" style="margin: 2rem 0 1rem;">SAFETY_GUARDRAILS</h4>
+                    <pre class="mono" style="background: rgba(255, 0, 0, 0.05); padding: 1.5rem; border: 1px solid rgba(255, 0, 0, 0.2); color: #ff5f5f; font-size: 0.8rem;">
+# Default-to-Deny Architecture
+def validate_science(verdict):
+    if verdict not in ["GREEN", "YELLOW"]:
+        raise HTTPException(status_code=403)
+    return True
+
+# Error Fallback
+except SystemFailure:
+    return VERDICT_RED
+                    </pre>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

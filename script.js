@@ -182,8 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.scroll-section').forEach(section => observer.observe(section));
 
+    // 6. NODE INSPECT OVERLAY LOGIC
+    const inspectTrigger = document.getElementById('inspect-resfit');
+    const inspectOverlay = document.getElementById('inspect-overlay');
+    const inspectBackdrop = document.getElementById('inspect-backdrop');
+
+    if (inspectTrigger && inspectOverlay && inspectBackdrop) {
+        inspectTrigger.addEventListener('mouseenter', () => {
+            inspectOverlay.classList.add('active');
+            inspectBackdrop.classList.add('active');
+            landingPage.style.overflowY = 'hidden';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (inspectOverlay.classList.contains('active')) {
+                const xPercent = e.clientX / window.innerWidth;
+                const yPercent = e.clientY / window.innerHeight;
+
+                // Close if in 10% "Dead Zone" (outside 80% center rectangle)
+                if (xPercent < 0.1 || xPercent > 0.9 || yPercent < 0.1 || yPercent > 0.9) {
+                    inspectOverlay.classList.remove('active');
+                    inspectBackdrop.classList.remove('active');
+                    landingPage.style.overflowY = 'auto';
+                }
+            }
+        });
+    }
+
     // Init
-    eyeLidUpper.setAttribute('d', CLOSED);
-    eyeLidLower.setAttribute('d', CLOSED);
-    updateClip(CLOSED, CLOSED);
+    morphLids(CLOSED_Y, CLOSED_Y, 0);
 });
