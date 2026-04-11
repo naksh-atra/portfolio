@@ -166,7 +166,7 @@
                         <span>Grounding_Engine</span>
                         <span>YAML_Logic</span>
                     </div>
-                    <div class="inspect-trigger" id="inspect-resfit">+</div>
+                    <div class="inspect-trigger" id="inspect-resfit" data-project="resfit">+</div>
                 </div>
                 <div class="terminal-side">
                     <svg viewBox="0 0 500 400" style="width: 100%; height: auto; opacity: 0.8;">
@@ -190,49 +190,87 @@
             </div>
         </section>
 
-        <!-- Section 4: [ RELATIONAL_INTELLIGENCE ] -->
+        <!-- Section 4: [ SYSTEMS_ENGINEERING ] -->
         <section class="scroll-section" id="stack-section">
-            <div class="section-content split-pane">
+            <div class="section-content split-pane" style="flex-direction: row-reverse;">
                 <div class="narrative-side">
-                    <h2>BIO_GRAPH_NEURAL_NETWORKS</h2>
-                    <p>In-silico drug repurposing engine combining GAT (Graph Attention Networks) with MedGemma
-                        Chain-of-Thought reasoning.</p>
+                    <h2>Systems Engineering & Agentic Architectures</h2>
+                    <p class="philosophical-pitch">Beyond building applications, I design autonomous pipelines and high-scale inference engines. My focus is on persistent memory for LLMs, deterministic safety guardrails, and sub-400ms real-time voice orchestration.</p>
                     <div class="tool-bubbles">
-                        <span>Neo4j</span>
-                        <span>Torch_Geometric</span>
-                        <span>FAISS</span>
-                        <span>GNN</span>
-                        <span>Llama_3.2</span>
+                        <span>Autonomous_Pipelines</span>
+                        <span>High_Scale_Inference</span>
+                        <span>Real_Time_Voice</span>
+                        <span>Stateful_Agents</span>
+                    </div>
+                    <div class="inspect-trigger" id="inspect-capabilities" data-project="capabilities">
+                        <span class="mono" style="font-size: 0.6rem; margin-right: 1rem; opacity: 0.6;">[ VIEW_SKILL_ARCHITECTURE ]</span> +
                     </div>
                 </div>
                 <div class="terminal-side">
-                    <div class="terminal-body mono">
-                        <p>> GNN_ENGINE: GAT_LAYER_ACTIVE</p>
-                        <p>> PREDICTING_LINK: [DRUG] <-> [DISEASE]</p>
-                        <p>> DIMENSIONS: 384 (MiniLM-L6)</p>
-                    </div>
-                    <button class="deep-dive-trigger" data-project="relational">> [ VIEW_LOGS ]</button>
+                    <svg viewBox="0 0 500 400" style="width: 100%; height: auto; opacity: 0.8;">
+                        <!-- Abstract Control Plane / API Gateway -->
+                        <path d="M 50 100 L 450 100" class="connector" stroke-dasharray="10,5" />
+                        <path d="M 50 300 L 450 300" class="connector" stroke-dasharray="10,5" />
+                        
+                        <rect x="180" y="50" width="140" height="300" rx="15" class="node-circle" />
+                        <text x="200" y="30" class="node-label" style="font-size: 14px;">CENTRAL_ORCHESTRATOR</text>
+                        
+                        <circle cx="250" cy="120" r="5" class="node-circle" />
+                        <circle cx="250" cy="200" r="5" class="node-circle" />
+                        <circle cx="250" cy="280" r="5" class="node-circle" />
+                        
+                        <line x1="120" y1="120" x2="180" y2="120" class="connector" />
+                        <line x1="320" y1="120" x2="380" y2="120" class="connector" />
+                        <line x1="120" y1="200" x2="180" y2="200" class="connector" />
+                    </svg>
                 </div>
             </div>
         </section>
 
-        <!-- Section 5: The Workflow Environment -->
-        <section class="scroll-section" id="environment">
-            <div class="section-content terminal-aesthetic">
-                <div class="status-overlay mono">[ STATUS: MCP_UPLINK_ACTIVE | LATENCY: <1ms ]</div>
-                        <div class="terminal-body">
-                            <h2>Integrated Agentic Workflow.</h2>
-                            <p>Developing within a product-agnostic, MCP-standardized environment. I orchestrate
-                                Headless IDE Agents and Context-Aware Local RAG to automate the bridge between complex
-                                system architecture and production deployment.</p>
-                        </div>
+        <!-- Section 5: [ INDUSTRIAL_PROOF ] -->
+        <section class="scroll-section" id="production-section">
+            <div class="section-content split-pane">
+                <div class="terminal-side">
+                    <svg viewBox="0 0 500 400" style="width: 100%; height: auto; opacity: 0.8;">
+                        <!-- Schematic for Voice Infrastructure -->
+                        <rect x="50" y="50" width="100" height="60" rx="8" class="node-circle" />
+                        <text x="75" y="85" class="node-label" style="font-size: 14px;">TWILIO</text>
+                        
+                        <line x1="150" y1="80" x2="250" y2="80" class="connector" />
+                        
+                        <rect x="250" y="50" width="100" height="60" rx="8" class="node-circle" />
+                        <text x="270" y="85" class="node-label" style="font-size: 14px;">LIVEKIT</text>
+                        
+                        <path d="M 300 110 L 300 200" class="connector" />
+                        
+                        <rect x="200" y="200" width="200" height="150" rx="20" class="node-circle" stroke-dasharray="10,5" />
+                        <text x="230" y="190" class="node-label" style="font-size: 12px; opacity: 0.5;">AZURE_CLOUD_CORE</text>
+                        
+                        <text x="230" y="240" class="node-label" style="font-size: 10px;">• REDIS_CACHE</text>
+                        <text x="230" y="270" class="node-label" style="font-size: 10px;">• AI_GATEWAY</text>
+                        <text x="230" y="300" class="node-label" style="font-size: 10px;">• LINUX_MICROSERVICES</text>
+                    </svg>
                 </div>
+                <div class="narrative-side">
+                    <h2>Real-time Voice AI & Production Infrastructure</h2>
+                    <p class="philosophical-pitch">End-to-end technical ownership of a production-grade, configurable voice AI workforce at Propeller Global Ventures. This system orchestrates real-time conversational agents with sub-400ms cadence across modular AI providers.</p>
+                    <div class="tool-bubbles">
+                        <span>Twilio_SIP</span>
+                        <span>LiveKit_WebRTC</span>
+                        <span>Azure_Infra</span>
+                        <span>Redis_Persistence</span>
+                    </div>
+                    <div class="inspect-trigger" id="inspect-industrial" data-project="industrial">
+                        <span class="mono" style="font-size: 0.6rem; margin-right: 1rem; opacity: 0.6;">[ NODE_INSPECT_v5.0 ]</span> +
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Section 6: Contact -->
         <section class="scroll-section" id="contact-section">
             <div class="section-content contact-final">
-                <h2>Ready to build infrastructure that lasts?</h2>
+                <h2 class="contact-tagline">Build infrastructure that lasts.</h2>
                 <div class="contact-links">
                     <a href="https://github.com/naksh-atra" target="_blank" class="contact-label">[ GITHUB ]</a>
                     <a href="https://linkedin.com/in/nakshatra-rajput" target="_blank" class="contact-label">[ LINKEDIN
@@ -247,58 +285,8 @@
     <!-- Technical Inspect Overlay -->
     <div class="inspect-backdrop" id="inspect-backdrop"></div>
     <div class="inspect-overlay-container" id="inspect-overlay">
-        <div class="inspect-content">
-            <h3 class="mono" style="margin-bottom: 2rem; color: var(--terminal-teal);">[ NODE_INSPECT_v3.0 ]</h3>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem;">
-                <div>
-                    <h4 class="mono" style="margin-bottom: 1rem;">KNOWLEDGE_GRAPH</h4>
-                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 300px;">
-                        <line x1="100" y1="100" x2="50" y2="50" class="connector" stroke-opacity="0.5" />
-                        <line x1="100" y1="100" x2="150" y2="50" class="connector" stroke-opacity="0.5" />
-                        <circle cx="100" cy="100" r="4" class="node-circle" />
-                        <text x="110" y="105" class="node-label" style="font-size: 8px;">PRESCRIPTION_GATES</text>
-                        <circle cx="50" cy="50" r="3" class="node-circle" />
-                        <text x="10" y="45" class="node-label" style="font-size: 6px;">Schoenfeld_2016</text>
-                        <circle cx="150" cy="50" r="3" class="node-circle" />
-                        <text x="155" y="45" class="node-label" style="font-size: 6px;">Seiler_2010</text>
-                    </svg>
-                    
-                    <h4 class="mono" style="margin: 2rem 0 1rem;">THE_SCIENCE</h4>
-                    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--narrative-grey);">
-                        Zone 2 Aerobic Base protocols derived from Seiler’s Polarized model. 
-                        Hypertrophy volume capped at 20 sets/week to prevent CNS fatigue 
-                        grounded in Schoenfeld’s 2017 meta-analysis.
-                    </p>
-                </div>
-                
-                <div>
-                    <h4 class="mono" style="margin-bottom: 1rem;">LOGIC_MANIFEST (endurance.yaml)</h4>
-                    <pre class="mono" style="background: rgba(0,0,0,0.3); padding: 1.5rem; border: 1px solid var(--card-border); color: var(--terminal-teal); font-size: 0.8rem;">
-parameters:
-  intensity:
-    metric: RPE
-    value: 4
-    rir: null # No fatigue target for Z2
-  tempo: "3010"
-  cadence: 80-90
-  rest: 0
-                     </pre>
-
-                    <h4 class="mono" style="margin: 2rem 0 1rem;">SAFETY_GUARDRAILS</h4>
-                    <pre class="mono" style="background: rgba(255, 0, 0, 0.05); padding: 1.5rem; border: 1px solid rgba(255, 0, 0, 0.2); color: #ff5f5f; font-size: 0.8rem;">
-# Default-to-Deny Architecture
-def validate_science(verdict):
-    if verdict not in ["GREEN", "YELLOW"]:
-        raise HTTPException(status_code=403)
-    return True
-
-# Error Fallback
-except SystemFailure:
-    return VERDICT_RED
-                    </pre>
-                </div>
-            </div>
+        <div class="inspect-content" id="inspect-inner-content">
+            <!-- Dynamically populated -->
         </div>
     </div>
 

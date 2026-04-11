@@ -169,9 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (entry.target.id === 'contact-section') {
                     state.in_contact = true;
-                    openEye(true);
+                    document.body.classList.add('contact-active');
+                    openEye(false); // Fix: Keep shape consistent
                 } else {
                     state.in_contact = false;
+                    document.body.classList.remove('contact-active');
                     if (eyeContainer.classList.contains('open')) openEye(false);
                 }
             } else {
@@ -183,31 +185,144 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.scroll-section').forEach(section => observer.observe(section));
 
     // 6. NODE INSPECT OVERLAY LOGIC
-    const inspectTrigger = document.getElementById('inspect-resfit');
     const inspectOverlay = document.getElementById('inspect-overlay');
+    const inspectInner = document.getElementById('inspect-inner-content');
     const inspectBackdrop = document.getElementById('inspect-backdrop');
 
-    if (inspectTrigger && inspectOverlay && inspectBackdrop) {
-        inspectTrigger.addEventListener('mouseenter', () => {
+    const inspectData = {
+        resfit: `
+            <h3 class="mono" style="margin-bottom: 2rem; color: var(--terminal-teal);">[ NODE_INSPECT_v3.0 ]</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem;">
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">KNOWLEDGE_GRAPH</h4>
+                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 300px;">
+                        <line x1="100" y1="100" x2="50" y2="50" class="connector" stroke-opacity="0.5" />
+                        <line x1="100" y1="100" x2="150" y2="50" class="connector" stroke-opacity="0.5" />
+                        <circle cx="100" cy="100" r="4" class="node-circle" />
+                        <text x="110" y="105" class="node-label" style="font-size: 8px;">PRESCRIPTION_GATES</text>
+                        <circle cx="50" cy="50" r="3" class="node-circle" />
+                        <text x="10" y="45" class="node-label" style="font-size: 6px;">Schoenfeld_2016</text>
+                        <circle cx="150" cy="50" r="3" class="node-circle" />
+                        <text x="155" y="45" class="node-label" style="font-size: 6px;">Seiler_2010</text>
+                    </svg>
+                    <h4 class="mono" style="margin: 2rem 0 1rem;">THE_SCIENCE</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--narrative-grey);">
+                        Zone 2 Aerobic Base protocols derived from Seiler’s Polarized model. 
+                        Hypertrophy volume capped at 20 sets/week to prevent CNS fatigue 
+                        grounded in Schoenfeld’s 2017 meta-analysis.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">LOGIC_MANIFEST (endurance.yaml)</h4>
+                    <pre class="mono" style="background: rgba(0,0,0,0.3); padding: 1.5rem; border: 1px solid var(--card-border); color: var(--terminal-teal); font-size: 0.8rem;">
+parameters:
+  intensity:
+    metric: RPE
+    value: 4
+    rir: null # No fatigue target for Z2
+  tempo: "3010"
+  cadence: 80-90
+  rest: 0
+                     </pre>
+                    <h4 class="mono" style="margin: 2rem 0 1rem;">SAFETY_GUARDRAILS</h4>
+                    <pre class="mono" style="background: rgba(255, 0, 0, 0.05); padding: 1.5rem; border: 1px solid rgba(255, 0, 0, 0.2); color: #ff5f5f; font-size: 0.75rem;">
+def validate_science(verdict):
+    if verdict not in ["GREEN", "YELLOW"]:
+        raise HTTPException(status_code=403)
+    return True
+                    </pre>
+                </div>
+            </div>
+        `,
+        capabilities: `
+            <h3 class="mono" style="margin-bottom: 2rem; color: var(--terminal-teal);">[ TECHNICAL_AUDIT_v1.0 ]</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem;">
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">SKILLS_GRAPH</h4>
+                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 300px;">
+                        <circle cx="100" cy="40" r="4" class="node-circle" />
+                        <text x="110" y="45" class="node-label" style="font-size: 8px;">Python (Production)</text>
+                        <line x1="100" y1="40" x2="100" y2="80" class="connector" />
+                        <circle cx="100" cy="80" r="4" class="node-circle" />
+                        <text x="110" y="85" class="node-label" style="font-size: 8px;">Agentic RAG</text>
+                        <line x1="100" y1="80" x2="60" y2="120" class="connector" />
+                        <circle cx="60" cy="120" r="4" class="node-circle" />
+                        <text x="10" y="130" class="node-label" style="font-size: 8px;">Qdrant</text>
+                        <line x1="100" y1="80" x2="140" y2="120" class="connector" />
+                        <circle cx="140" cy="120" r="4" class="node-circle" />
+                        <text x="150" y="130" class="node-label" style="font-size: 8px;">LiveKit/Cerebras</text>
+                    </svg>
+                    <h4 class="mono" style="margin: 2rem 0 1rem;">DETERMINISTIC_RAG</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--narrative-grey);">
+                        Designing systems where LLMs audit peer-reviewed science (YAML manifests) 
+                        rather than generating novel science, ensuring 100% citation grounding.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">THE_INVISIBLE_TOOLKIT</h4>
+                    <div class="mono" style="font-size: 0.8rem; border-left: 2px solid var(--terminal-teal); padding-left: 1rem;">
+                        <p style="margin-bottom: 1rem;">[ ORCHESTRATION ]<br>9-node state machines in LangGraph for recursive self-correction.</p>
+                        <p style="margin-bottom: 1rem;">[ INFRASTRUCTURE ]<br>Azure, SSL/Reverse Proxy, Linux service migrations.</p>
+                        <p style="margin-bottom: 1rem;">[ WORKFLOW ]<br>OpenCode local dev for persistent memory across long coding sessions.</p>
+                    </div>
+                </div>
+            </div>
+        `,
+        industrial: `
+            <h3 class="mono" style="margin-bottom: 2rem; color: var(--terminal-teal);">[ PRODUCTION_AUDIT_v5.0 ]</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem;">
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">VOICE_BACKBONE</h4>
+                    <svg viewBox="0 0 200 200" style="width: 100%; max-width: 300px;">
+                        <circle cx="40" cy="100" r="4" class="node-circle" />
+                        <text x="10" y="90" class="node-label" style="font-size: 8px;">Twilio (SIP)</text>
+                        <line x1="40" y1="100" x2="100" y2="100" class="connector" />
+                        <circle cx="100" cy="100" r="4" class="node-circle" />
+                        <text x="80" y="115" class="node-label" style="font-size: 8px;">LiveKit (WebRTC)</text>
+                        <line x1="100" y1="100" x2="160" y2="100" class="connector" />
+                        <circle cx="160" cy="100" r="4" class="node-circle" />
+                        <text x="140" y="90" class="node-label" style="font-size: 8px;">Cerebras Llama3.1</text>
+                    </svg>
+                    <h4 class="mono" style="margin: 2rem 0 1rem;">LATENCY_ENGINEERING</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6; color: var(--narrative-grey);">
+                        Technical breakdown: VAD-based interruption handling and provider 
+                        pre-warming strategies that achieved human-like sub-400ms cadence.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="mono" style="margin-bottom: 1rem;">INFRASTRUCTURE_MANIFEST</h4>
+                    <div class="mono" style="font-size: 0.8rem; border-left: 2px solid var(--terminal-teal); padding-left: 1rem;">
+                        <p style="margin-bottom: 1rem;">[ SOVEREIGNTY ]<br>Runtime-resolved layer for hot-swapping STT/LLM/TTS providers with 0ms downtime.</p>
+                        <p style="margin-bottom: 1rem;">[ CLOUD_HARDENING ]<br>Azure Linux migration, containerization, and SSL/Reverse Proxy hardening.</p>
+                        <p style="margin-bottom: 1rem;">[ GUARDED_RAG ]<br>Secondary backend-controlled LLM layer for document context verification.</p>
+                    </div>
+                </div>
+            </div>
+        `
+    };
+
+    document.querySelectorAll('.inspect-trigger').forEach(trigger => {
+        trigger.addEventListener('mouseenter', () => {
+            const project = trigger.getAttribute('data-project');
+            inspectInner.innerHTML = inspectData[project] || "Data missing.";
             inspectOverlay.classList.add('active');
             inspectBackdrop.classList.add('active');
             landingPage.style.overflowY = 'hidden';
         });
+    });
 
-        window.addEventListener('mousemove', (e) => {
-            if (inspectOverlay.classList.contains('active')) {
-                const xPercent = e.clientX / window.innerWidth;
-                const yPercent = e.clientY / window.innerHeight;
+    window.addEventListener('mousemove', (e) => {
+        if (inspectOverlay.classList.contains('active')) {
+            const xPercent = e.clientX / window.innerWidth;
+            const yPercent = e.clientY / window.innerHeight;
 
-                // Close if in 10% "Dead Zone" (outside 80% center rectangle)
-                if (xPercent < 0.1 || xPercent > 0.9 || yPercent < 0.1 || yPercent > 0.9) {
-                    inspectOverlay.classList.remove('active');
-                    inspectBackdrop.classList.remove('active');
-                    landingPage.style.overflowY = 'auto';
-                }
+            if (xPercent < 0.1 || xPercent > 0.9 || yPercent < 0.1 || yPercent > 0.9) {
+                inspectOverlay.classList.remove('active');
+                inspectBackdrop.classList.remove('active');
+                landingPage.style.overflowY = 'auto';
             }
-        });
-    }
+        }
+    });
 
     // Init
     morphLids(CLOSED_Y, CLOSED_Y, 0);
