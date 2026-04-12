@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Eye from "./Eye";
-
 import FixedSocials from "./FixedSocials";
 import CustomCursor from "./CustomCursor";
+import KnowledgeGraph from "./KnowledgeGraph";
+
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("hero-section");
@@ -171,7 +172,8 @@ export default function Portfolio() {
 
           {/* Section 2: About */}
           <section className={`scroll-section ${activeSection === "pitch-section" ? "in-focus" : ""}`} id="pitch-section">
-            <div className="split-pane">
+            <div className="split-pane pt-18">
+
 
               <div className="narrative-side">
                 <h2 className="text-[1.8rem] font-black my-2 tracking-tighter">The Model is a component, not the system</h2>
@@ -183,46 +185,15 @@ export default function Portfolio() {
                   No wrappers, I architect agentic ecosystems that reason, verify and adapt. Transparent, research-grounded infrastructure that treats every token as a calculated decision.
                 </p>
               </div>
-              <div className="terminal-side">
-                <div className="terminal-body w-full h-full">
-                  <svg viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid meet" className="w-full h-full">
-                    <g className="animate-fade-in-graph" transform="translate(80, 80)">
-                      <line className="connector" x1="450" y1="250" x2="420" y2="180" />
-                      <line className="connector" x1="450" y1="250" x2="480" y2="320" />
-                      <line className="connector" x1="450" y1="250" x2="520" y2="240" />
-                      <line className="connector" x1="420" y1="180" x2="480" y2="320" />
-                      <line className="connector" x1="450" y1="250" x2="350" y2="200" />
-                      <line className="connector" x1="350" y1="200" x2="280" y2="150" />
-                      <line className="connector" x1="350" y1="200" x2="270" y2="220" />
-                      <line className="connector" x1="520" y1="240" x2="600" y2="180" />
-                      <line className="connector" x1="600" y1="180" x2="650" y2="140" />
-                      <line className="connector" x1="600" y1="180" x2="680" y2="200" />
+              <div className="terminal-side ml-14 translate-x-8">
 
-                      <g transform="translate(450, 250)">
-                        <circle className="node-circle" r="6" />
-                        <text className="node-label" x="12" y="4">SYSTEM_ORCHESTRATOR</text>
-                        <text className="data-meta" x="12" y="15">lat: &lt; 200ms</text>
-                      </g>
-                      <g transform="translate(420, 180)">
-                        <circle className="node-circle" r="4" />
-                        <text className="node-label" x="10" y="4">REASONING_LOOP</text>
-                      </g>
-                      <g transform="translate(480, 320)">
-                        <circle className="node-circle" r="4" />
-                        <text className="node-label" x="10" y="4">STATE_MANAGER</text>
-                      </g>
-                      <g transform="translate(350, 200)">
-                        <circle className="node-circle" r="4" />
-                        <text className="node-label" x="-105" y="4">RAG_VALIDATOR</text>
-                      </g>
-                      <g transform="translate(280, 150)">
-                        <circle className="node-circle" r="3" />
-                        <text className="node-label" x="-95" y="4">KNOWLEDGE_BASE</text>
-                      </g>
-                    </g>
-                  </svg>
+                <div className="terminal-body w-full h-[75vh] relative overflow-hidden bg-background/5 border border-eye/10 rounded-lg">
+
+                  <KnowledgeGraph />
                 </div>
               </div>
+
+
             </div>
           </section>
 
