@@ -1,6 +1,12 @@
 *.pdf
 
 .opencode/
-portfolio/
+# Project ignore
+# portfolio/
+portfolio/node_modules/
+portfolio/.next/
+portfolio/out/
+portfolio/build/
+
 Portfolio_obsidian/
-temp.html
+temp.html

@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #121212;
+  --eye-color: rgba(255, 250, 235, 1);
+  --terminal-teal: #00ffca;
+  --narrative-grey: rgba(255, 250, 235, 0.5);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --transition-speed: 0.8s;
+  --easing: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-eye font-sans overflow-hidden h-screen cursor-none;
+  }
+}
+
+@layer utilities {
+  .mono {
+    @apply font-mono text-[0.7rem] tracking-[0.1rem];
+  }
+
+  /* Scroll Engine */
+  .landing-page {
+    @apply h-screen w-full overflow-hidden relative z-10;
+    scrollbar-width: none;
+  }
+
+
+
+
+
+  .landing-page::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-section {
+    @apply h-screen w-full snap-center flex justify-center items-center px-[5%] py-[2vh] relative overflow-hidden;
+    scroll-snap-stop: always;
+  }
+
+
+
+
+  /* Split-Pane */
+  .split-pane {
+    @apply flex flex-col lg:flex-row w-full h-auto lg:h-[55vh] items-center gap-8 lg:gap-[300px] opacity-0 translate-y-12 transition-all duration-[1000ms] ease-eye-ease;
+
+
+
+    will-change: transform, opacity;
+  }
+
+  .in-focus .split-pane {
+    @apply opacity-100 translate-y-0 z-10 !important;
+  }
+
+  .narrative-side {
+    @apply flex-1 px-8 z-50 max-w-[800px];
+  }
+
+  .terminal-side {
+    @apply flex-1 px-8 z-50;
+  }
+
+  /* Connector & Nodes */
+  .connector {
+    @apply stroke-eye stroke-[0.5] opacity-[0.15];
+  }
+
+  .node-circle {
+    @apply fill-none stroke-eye stroke-[1];
+  }
+
+  .node-label {
+    @apply fill-narrative font-mono text-[10px] uppercase;
+  }
+
+  .data-meta {
+    @apply font-mono text-[8px] opacity-30;
+    fill: var(--eye-color);
+  }
+
+  /* Custom Transitions */
+  .eye-iris {
+    @apply fill-eye opacity-0 scale-[0.6] transition-all duration-[400ms] ease-in-out origin-center;
+  }
+
+  .eye-pupil {
+    @apply fill-background opacity-0 scale-[0.6] transition-all duration-[400ms] origin-center;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .open .eye-iris,
+  .open .eye-pupil {
+    @apply opacity-100 scale-100;
+  }
+
+  .contact-active .fixed-socials {
+    @apply bottom-[25vh] left-1/2 -translate-x-1/2 flex-row gap-12;
+  }
+}
