@@ -306,7 +306,8 @@ export default function Portfolio() {
               transition={{ duration: 0.6, ease: [0.77, 0, 0.175, 1] }}
               className="relative w-[80vw] h-[80vh] bg-[#121212]/95 border border-eye/10 rounded-[24px] z-[2000] overflow-hidden flex flex-col shadow-2xl pointer-events-auto"
             >
-              <div className="flex-1 overflow-y-auto p-16 relative">
+              <div className="flex-1 overflow-y-auto p-16 relative inspect-content">
+
                 <button
                   className="absolute top-8 right-8 text-eye/40 hover:text-eye transition-colors z-50 font-mono text-[0.8rem]"
                   onClick={() => setInspectProject(null)}

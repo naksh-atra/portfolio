@@ -103,4 +103,13 @@
   .contact-active .fixed-socials {
     @apply bottom-[25vh] left-1/2 -translate-x-1/2 flex-row gap-12;
   }
+
+  .inspect-content::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .inspect-content::-webkit-scrollbar-thumb {
+    background: var(--card-border);
+    border-radius: 2px;
+  }
 }
