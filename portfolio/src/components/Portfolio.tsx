@@ -230,18 +230,14 @@ export default function Portfolio() {
                 </div>
                 <div className="terminal-side">
                   {key === 'resfit' && (
-                    <svg viewBox="0 0 500 400" className="w-full opacity-80">
-                      <rect x="50" y="150" width="120" height="80" rx="8" className="node-circle" />
-                      <text x="65" y="195" className="node-label" style={{ fontSize: '12px' }}>INPUT_VECTOR</text>
-                      <line x1="170" y1="190" x2="250" y2="190" className="connector" />
-                      <rect x="250" y="50" width="200" height="280" rx="20" className="node-circle" strokeDasharray="8,4" />
-                      <text x="280" y="40" className="node-label" style={{ fontSize: '14px', opacity: 0.5 }}>HARD_BLOCK_CORE</text>
-                      <circle cx="350" cy="150" r="40" className="node-circle" />
-                      <text x="325" y="155" className="node-label" style={{ fontSize: '10px' }}>LOGIC_GATES</text>
-                      <path d="M 350 190 L 350 260" className="connector" />
-                      <rect x="290" y="260" width="120" height="60" rx="8" className="node-circle" />
-                      <text x="305" y="295" className="node-label" style={{ fontSize: '12px' }}>PRESCRIPTION</text>
-                    </svg>
+                    <div className="w-full h-full flex items-center justify-center">
+                      <img
+                        src={`/section3_workflow.png?v=${Date.now()}`}
+                        alt="Deterministic Audit Pipeline Workflow"
+                        className="w-full max-h-[75vh] object-contain"
+                        style={{ objectPosition: 'center' }}
+                      />
+                    </div>
                   )}
                   {key === 'capabilities' && (
                     <svg viewBox="0 0 500 400" className="w-full opacity-80">
