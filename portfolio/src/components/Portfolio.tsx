@@ -109,7 +109,7 @@ export default function Portfolio() {
     resfit: {
       title: "Deterministic Exercise Prescription Engine",
       pitch: "A production-deployed system that bridges the gap between longitudinal exercise science and personalized programming. It utilizes an architectural hard-block to ensure every prescription remains grounded in 2023–2025 meta-analyses rather than LLM hallucinations.",
-      tools: ["Exercise_Science", "Meta_Analysis", "Grounding_Engine", "YAML_Logic"],
+      tools: ["FastAPI", "Multi-Layer Caching", "AI-Grounded Reasoning", "Multi-Model Orchestration", "Safety-Constrained AI"],
       id: "resfit"
     },
     capabilities: {
