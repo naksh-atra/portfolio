@@ -310,43 +310,138 @@ export default function Portfolio() {
                 >
                   [ CLOSE ]
                 </button>
-
                 {inspectProject === 'resfit' && (
                   <div>
-                    <h3 className="mono text-teal-terminal mb-8">[ NODE_INSPECT_v3.0 ]</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-12">
-                      <div>
-                        <h4 className="mono mb-4 text-eye">KNOWLEDGE_GRAPH</h4>
-                        <svg viewBox="0 0 200 200" className="w-full max-w-[300px]">
-                          <line x1="100" y1="100" x2="50" y2="50" className="connector" strokeOpacity={0.5} />
-                          <line x1="100" y1="100" x2="150" y2="50" className="connector" strokeOpacity={0.5} />
-                          <circle cx="100" cy="100" r="4" className="node-circle" />
-                          <text x="110" y="105" className="node-label" style={{ fontSize: '8px' }}>PRESCRIPTION_GATES</text>
-                          <circle cx="50" cy="50" r="3" className="node-circle" />
-                          <text x="10" y="45" className="node-label" style={{ fontSize: '6px' }}>Schoenfeld_2016</text>
-                          <circle cx="150" cy="50" r="3" className="node-circle" />
-                          <text x="155" y="45" className="node-label" style={{ fontSize: '6px' }}>Seiler_2010</text>
-                        </svg>
-                        <h4 className="mono mt-8 mb-4">THE_SCIENCE</h4>
-                        <p className="text-[0.9rem] leading-relaxed text-narrative">
-                          Zone 2 Aerobic Base protocols derived from Seiler’s Polarized model.
-                          Hypertrophy volume capped at 20 sets/week to prevent CNS fatigue
-                          grounded in Schoenfeld’s 2017 meta-analysis.
-                        </p>
+                    {/* <h3 className="mono text-teal-terminal mb-2">[ NODE_INSPECT_v3.0 ]</h3> */}
+                    <p className="mono text-eye/30 text-[0.65rem] mb-10 tracking-widest">DETERMINISTIC EXERCISE PRESCRIPTION ENGINE — TECHNICAL AUDIT</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                      {/* Card 1 */}
+                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                        <div className="flex items-start gap-4 mb-4">
+                          <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
+                            <rect x="4" y="20" width="12" height="9" rx="2" stroke="rgba(255,250,235,0.5)" />
+                            <rect x="32" y="20" width="12" height="9" rx="2" stroke="#00ffca" />
+                            <circle cx="24" cy="24" r="6" stroke="rgba(255,250,235,0.3)" strokeDasharray="3 2" />
+                            <line x1="16" y1="24" x2="18" y2="24" stroke="rgba(255,250,235,0.3)" />
+                            <line x1="30" y1="24" x2="32" y2="24" stroke="#00ffca" />
+                            <path d="M24 18 L24 13 L37 13" stroke="rgba(0,255,202,0.4)" strokeDasharray="2 2" />
+                            <text x="28" y="11" fontSize="4" fill="#00ffca" fontFamily="monospace" opacity="0.7">VALIDATE</text>
+                          </svg>
+                          <div>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2">LLM-AS-VALIDATOR ARCHITECTURE</h4>
+                            <p className="text-narrative text-[0.78rem] leading-relaxed">AI enhances but doesn't drive — domain logic comes from prescriptions, not model hallucination.</p>
+                          </div>
+                        </div>
+                        <div className="w-full h-px bg-eye/5 my-3" />
+                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">DOMAIN_LOGIC → LLM → VERIFIED_OUTPUT</p>
                       </div>
-                      <div>
-                        <h4 className="mono mb-4">LOGIC_MANIFEST (endurance.yaml)</h4>
-                        <pre className="mono bg-black/30 p-6 border border-eye/10 text-teal-terminal text-[0.8rem] overflow-x-auto">
-                          {`parameters:
-  intensity:
-    metric: RPE
-    value: 4
-    rir: null # No fatigue target for Z2
-  tempo: "3010"
-  cadence: 80-90
-  rest: 0`}
-                        </pre>
+
+                      {/* Card 2 */}
+                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                        <div className="flex items-start gap-4 mb-4">
+                          <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
+                            <circle cx="10" cy="24" r="5" stroke="rgba(255,250,235,0.5)" />
+                            <circle cx="24" cy="24" r="5" stroke="rgba(255,250,235,0.35)" strokeDasharray="2 2" />
+                            <circle cx="38" cy="24" r="5" stroke="#00ffca" />
+                            <line x1="15" y1="24" x2="19" y2="24" stroke="rgba(255,250,235,0.3)" />
+                            <line x1="29" y1="24" x2="33" y2="24" stroke="rgba(0,255,202,0.5)" />
+                            <text x="4" y="37" fontSize="3.5" fill="rgba(255,250,235,0.4)" fontFamily="monospace">SEARCH</text>
+                            <text x="17" y="37" fontSize="3.5" fill="rgba(255,250,235,0.4)" fontFamily="monospace">RETRIEVE</text>
+                            <text x="33" y="37" fontSize="3.5" fill="#00ffca" fontFamily="monospace" opacity="0.8">SYNTH</text>
+                          </svg>
+                          <div>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2">HYBRID RAG PIPELINE</h4>
+                            <p className="text-narrative text-[0.78rem] leading-relaxed">RAG retrieves scientific context before LLM synthesis, grounding all citations in real PubMed/ScienceDirect sources.</p>
+                          </div>
+                        </div>
+                        <div className="w-full h-px bg-eye/5 my-3" />
+                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">PUBMED + SCIENCEDIRECT → GROUNDED_CITATIONS</p>
                       </div>
+
+                      {/* Card 3 */}
+                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                        <div className="flex items-start gap-4 mb-4">
+                          <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
+                            <rect x="18" y="4" width="12" height="7" rx="1.5" stroke="#00ffca" />
+                            <line x1="24" y1="11" x2="24" y2="16" stroke="rgba(255,250,235,0.2)" />
+                            <rect x="4" y="16" width="10" height="6" rx="1" stroke="rgba(255,250,235,0.5)" />
+                            <rect x="19" y="16" width="10" height="6" rx="1" stroke="rgba(255,250,235,0.5)" />
+                            <rect x="34" y="16" width="10" height="6" rx="1" stroke="rgba(255,250,235,0.5)" />
+                            <line x1="24" y1="16" x2="9" y2="16" stroke="rgba(255,250,235,0.15)" />
+                            <line x1="24" y1="16" x2="39" y2="16" stroke="rgba(255,250,235,0.15)" />
+                            <text x="5" y="21" fontSize="2.8" fill="#00ffca" fontFamily="monospace" opacity="0.8">/generate</text>
+                            <text x="20" y="21" fontSize="2.8" fill="rgba(255,250,235,0.6)" fontFamily="monospace">/validate</text>
+                            <text x="35" y="21" fontSize="2.8" fill="rgba(255,250,235,0.6)" fontFamily="monospace">/export</text>
+                          </svg>
+                          <div>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2">FASTAPI + PRODUCTION REST API</h4>
+                            <p className="text-narrative text-[0.78rem] leading-relaxed">Production FastAPI backend with JWT auth, Pydantic validation and 9 endpoints including workout generation, modification validation and export.</p>
+                          </div>
+                        </div>
+                        <div className="w-full h-px bg-eye/5 my-3" />
+                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">JWT_AUTH · PYDANTIC · 9_ENDPOINTS</p>
+                      </div>
+
+                      {/* Card 4 */}
+                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                        <div className="flex items-start gap-4 mb-4">
+                          <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
+                            <path d="M24 4 L40 11 L40 26 C40 35 24 44 24 44 C24 44 8 35 8 26 L8 11 Z" stroke="rgba(0,255,202,0.5)" strokeDasharray="2 1" />
+                            <path d="M18 24 L22 28 L30 20" stroke="#00ffca" />
+                            <line x1="36" y1="9" x2="44" y2="5" stroke="rgba(255,250,235,0.15)" strokeDasharray="1 1" />
+                            <text x="35" y="4" fontSize="3" fill="rgba(255,250,235,0.3)" fontFamily="monospace">BLOCKED</text>
+                          </svg>
+                          <div>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2">SAFETY-CRITICAL AI GUARDRAILS</h4>
+                            <p className="text-narrative text-[0.78rem] leading-relaxed">Conservative verdict framework with hard safety gates — dangerous exercise substitutions are blocked at the application layer, not left to AI judgment.</p>
+                          </div>
+                        </div>
+                        <div className="w-full h-px bg-eye/5 my-3" />
+                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">HARD_GATES · APP_LAYER_ENFORCEMENT</p>
+                      </div>
+
+                      {/* Card 5 */}
+                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                        <div className="flex items-start gap-4 mb-4">
+                          <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
+                            <rect x="8" y="6" width="32" height="7" rx="2" stroke="#00ffca" />
+                            <rect x="8" y="17" width="32" height="7" rx="2" stroke="rgba(255,250,235,0.5)" />
+                            <rect x="8" y="28" width="32" height="7" rx="2" stroke="rgba(255,250,235,0.3)" />
+                            <text x="12" y="12" fontSize="3.5" fill="#00ffca" fontFamily="monospace" opacity="0.8">IN-MEMORY</text>
+                            <text x="12" y="23" fontSize="3.5" fill="rgba(255,250,235,0.6)" fontFamily="monospace">FILE-BASED</text>
+                            <text x="12" y="34" fontSize="3.5" fill="rgba(255,250,235,0.4)" fontFamily="monospace">MONGODB · 30d TTL</text>
+                          </svg>
+                          <div>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2">MULTI-TIER CACHING STRATEGY</h4>
+                            <p className="text-narrative text-[0.78rem] leading-relaxed">File-based + MongoDB + in-memory caching with 30-day TTL to reduce redundant LLM API calls while maintaining data freshness.</p>
+                          </div>
+                        </div>
+                        <div className="w-full h-px bg-eye/5 my-3" />
+                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">3_CACHE_LAYERS · 30D_TTL · ZERO_REDUNDANCY</p>
+                      </div>
+
+                      {/* Card 6 */}
+                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                        <div className="flex items-start gap-4 mb-4">
+                          <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
+                            <rect x="4" y="18" width="8" height="6" rx="1" stroke="rgba(255,250,235,0.4)" />
+                            <rect x="14" y="18" width="8" height="6" rx="1" stroke="rgba(255,250,235,0.4)" />
+                            <rect x="24" y="18" width="8" height="6" rx="1" stroke="rgba(255,250,235,0.4)" />
+                            <rect x="14" y="10" width="8" height="6" rx="1" stroke="rgba(255,250,235,0.25)" />
+                            <path d="M4 28 C4 38 44 38 44 28" stroke="rgba(0,255,202,0.5)" strokeDasharray="2 1" />
+                            <line x1="38" y1="28" x2="42" y2="22" stroke="rgba(0,255,202,0.4)" />
+                            <text x="34" y="20" fontSize="3" fill="#00ffca" fontFamily="monospace" opacity="0.8">RENDER</text>
+                          </svg>
+                          <div>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2">DOCKER + PRODUCTION DEPLOYMENT</h4>
+                            <p className="text-narrative text-[0.78rem] leading-relaxed">Containerized with Docker Compose and deployed to Render with auto-deploy hooks and external cron keep-alive.</p>
+                          </div>
+                        </div>
+                        <div className="w-full h-px bg-eye/5 my-3" />
+                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">DOCKER_COMPOSE · RENDER · AUTO_DEPLOY</p>
+                      </div>
+
                     </div>
                   </div>
                 )}
