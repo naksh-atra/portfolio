@@ -14,6 +14,7 @@ export default function Portfolio() {
   const [inContact, setInContact] = useState(false);
   const [eyeOpen, setEyeOpen] = useState(false);
   const [inspectProject, setInspectProject] = useState<string | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const landingPageRef = useRef<HTMLDivElement>(null);
   const inactivityTimerRef = useRef<NodeJS.Timeout>();
@@ -312,12 +313,14 @@ export default function Portfolio() {
                 </button>
                 {inspectProject === 'resfit' && (
                   <div>
-                    {/* <h3 className="mono text-teal-terminal mb-2">[ NODE_INSPECT_v3.0 ]</h3> */}
                     <p className="mono text-eye/30 text-[0.65rem] mb-10 tracking-widest">DETERMINISTIC EXERCISE PRESCRIPTION ENGINE — TECHNICAL AUDIT</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                       {/* Card 1 */}
-                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                      <div
+                        className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300 cursor-pointer group"
+                        onClick={() => setLightboxImage('/inspect/resfit_verdict.png')}
+                      >
                         <div className="flex items-start gap-4 mb-4">
                           <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
                             <rect x="4" y="20" width="12" height="9" rx="2" stroke="rgba(255,250,235,0.5)" />
@@ -329,16 +332,22 @@ export default function Portfolio() {
                             <text x="28" y="11" fontSize="4" fill="#00ffca" fontFamily="monospace" opacity="0.7">VALIDATE</text>
                           </svg>
                           <div>
-                            <h4 className="mono text-eye text-[0.8rem] mb-2">LLM-AS-VALIDATOR ARCHITECTURE</h4>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2 group-hover:text-teal-terminal transition-colors">LLM-AS-VALIDATOR ARCHITECTURE</h4>
                             <p className="text-narrative text-[0.78rem] leading-relaxed">AI enhances but doesn't drive — domain logic comes from prescriptions, not model hallucination.</p>
                           </div>
                         </div>
                         <div className="w-full h-px bg-eye/5 my-3" />
-                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">DOMAIN_LOGIC → LLM → VERIFIED_OUTPUT</p>
+                        <div className="flex justify-between items-center">
+                          <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">DOMAIN_LOGIC → LLM → VERIFIED_OUTPUT</p>
+                          <span className="font-mono text-[0.6rem] text-teal-terminal/50 opacity-0 group-hover:opacity-100 transition-opacity">[view]</span>
+                        </div>
                       </div>
 
                       {/* Card 2 */}
-                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                      <div
+                        className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300 cursor-pointer group"
+                        onClick={() => setLightboxImage('/inspect/resfit_citations.png')}
+                      >
                         <div className="flex items-start gap-4 mb-4">
                           <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
                             <circle cx="10" cy="24" r="5" stroke="rgba(255,250,235,0.5)" />
@@ -351,16 +360,22 @@ export default function Portfolio() {
                             <text x="33" y="37" fontSize="3.5" fill="#00ffca" fontFamily="monospace" opacity="0.8">SYNTH</text>
                           </svg>
                           <div>
-                            <h4 className="mono text-eye text-[0.8rem] mb-2">HYBRID RAG PIPELINE</h4>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2 group-hover:text-teal-terminal transition-colors">HYBRID RAG PIPELINE</h4>
                             <p className="text-narrative text-[0.78rem] leading-relaxed">RAG retrieves scientific context before LLM synthesis, grounding all citations in real PubMed/ScienceDirect sources.</p>
                           </div>
                         </div>
                         <div className="w-full h-px bg-eye/5 my-3" />
-                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">PUBMED + SCIENCEDIRECT → GROUNDED_CITATIONS</p>
+                        <div className="flex justify-between items-center">
+                          <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">PUBMED + SCIENCEDIRECT → GROUNDED_CITATIONS</p>
+                          <span className="font-mono text-[0.6rem] text-teal-terminal/50 opacity-0 group-hover:opacity-100 transition-opacity">[view]</span>
+                        </div>
                       </div>
 
                       {/* Card 3 */}
-                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                      <div
+                        className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300 cursor-pointer group"
+                        onClick={() => setLightboxImage('/inspect/fastapi_endpoints.png')}
+                      >
                         <div className="flex items-start gap-4 mb-4">
                           <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
                             <rect x="18" y="4" width="12" height="7" rx="1.5" stroke="#00ffca" />
@@ -370,21 +385,27 @@ export default function Portfolio() {
                             <rect x="34" y="16" width="10" height="6" rx="1" stroke="rgba(255,250,235,0.5)" />
                             <line x1="24" y1="16" x2="9" y2="16" stroke="rgba(255,250,235,0.15)" />
                             <line x1="24" y1="16" x2="39" y2="16" stroke="rgba(255,250,235,0.15)" />
-                            <text x="5" y="21" fontSize="2.8" fill="#00ffca" fontFamily="monospace" opacity="0.8">/generate</text>
-                            <text x="20" y="21" fontSize="2.8" fill="rgba(255,250,235,0.6)" fontFamily="monospace">/validate</text>
-                            <text x="35" y="21" fontSize="2.8" fill="rgba(255,250,235,0.6)" fontFamily="monospace">/export</text>
+                            <text x="5" y="21" fontSize="2.8" fill="#00ffca" fontFamily="monospace" opacity="0.8">/gen</text>
+                            <text x="20" y="21" fontSize="2.8" fill="rgba(255,250,235,0.6)" fontFamily="monospace">/val</text>
+                            <text x="35" y="21" fontSize="2.8" fill="rgba(255,250,235,0.6)" fontFamily="monospace">/exp</text>
                           </svg>
                           <div>
-                            <h4 className="mono text-eye text-[0.8rem] mb-2">FASTAPI + PRODUCTION REST API</h4>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2 group-hover:text-teal-terminal transition-colors">FASTAPI + PRODUCTION REST API</h4>
                             <p className="text-narrative text-[0.78rem] leading-relaxed">Production FastAPI backend with JWT auth, Pydantic validation and 9 endpoints including workout generation, modification validation and export.</p>
                           </div>
                         </div>
                         <div className="w-full h-px bg-eye/5 my-3" />
-                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">JWT_AUTH · PYDANTIC · 9_ENDPOINTS</p>
+                        <div className="flex justify-between items-center">
+                          <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">JWT_AUTH · PYDANTIC · 9_ENDPOINTS</p>
+                          <span className="font-mono text-[0.6rem] text-teal-terminal/50 opacity-0 group-hover:opacity-100 transition-opacity">[view]</span>
+                        </div>
                       </div>
 
                       {/* Card 4 */}
-                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                      <div
+                        className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300 cursor-pointer group"
+                        onClick={() => setLightboxImage('/inspect/guardrail.png')}
+                      >
                         <div className="flex items-start gap-4 mb-4">
                           <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
                             <path d="M24 4 L40 11 L40 26 C40 35 24 44 24 44 C24 44 8 35 8 26 L8 11 Z" stroke="rgba(0,255,202,0.5)" strokeDasharray="2 1" />
@@ -393,16 +414,22 @@ export default function Portfolio() {
                             <text x="35" y="4" fontSize="3" fill="rgba(255,250,235,0.3)" fontFamily="monospace">BLOCKED</text>
                           </svg>
                           <div>
-                            <h4 className="mono text-eye text-[0.8rem] mb-2">SAFETY-CRITICAL AI GUARDRAILS</h4>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2 group-hover:text-teal-terminal transition-colors">SAFETY-CRITICAL AI GUARDRAILS</h4>
                             <p className="text-narrative text-[0.78rem] leading-relaxed">Conservative verdict framework with hard safety gates — dangerous exercise substitutions are blocked at the application layer, not left to AI judgment.</p>
                           </div>
                         </div>
                         <div className="w-full h-px bg-eye/5 my-3" />
-                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">HARD_GATES · APP_LAYER_ENFORCEMENT</p>
+                        <div className="flex justify-between items-center">
+                          <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">HARD_GATES · APP_LAYER_ENFORCEMENT</p>
+                          <span className="font-mono text-[0.6rem] text-teal-terminal/50 opacity-0 group-hover:opacity-100 transition-opacity">[view]</span>
+                        </div>
                       </div>
 
                       {/* Card 5 */}
-                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                      <div
+                        className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300 cursor-pointer group"
+                        onClick={() => setLightboxImage('diagram-cache')}
+                      >
                         <div className="flex items-start gap-4 mb-4">
                           <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
                             <rect x="8" y="6" width="32" height="7" rx="2" stroke="#00ffca" />
@@ -410,19 +437,25 @@ export default function Portfolio() {
                             <rect x="8" y="28" width="32" height="7" rx="2" stroke="rgba(255,250,235,0.3)" />
                             <text x="12" y="12" fontSize="3.5" fill="#00ffca" fontFamily="monospace" opacity="0.8">IN-MEMORY</text>
                             <text x="12" y="23" fontSize="3.5" fill="rgba(255,250,235,0.6)" fontFamily="monospace">FILE-BASED</text>
-                            <text x="12" y="34" fontSize="3.5" fill="rgba(255,250,235,0.4)" fontFamily="monospace">MONGODB · 30d TTL</text>
+                            <text x="12" y="34" fontSize="3.5" fill="rgba(255,250,235,0.4)" fontFamily="monospace">DATABASE</text>
                           </svg>
                           <div>
-                            <h4 className="mono text-eye text-[0.8rem] mb-2">MULTI-TIER CACHING STRATEGY</h4>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2 group-hover:text-teal-terminal transition-colors">MULTI-TIER CACHING STRATEGY</h4>
                             <p className="text-narrative text-[0.78rem] leading-relaxed">File-based + MongoDB + in-memory caching with 30-day TTL to reduce redundant LLM API calls while maintaining data freshness.</p>
                           </div>
                         </div>
                         <div className="w-full h-px bg-eye/5 my-3" />
-                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">3_CACHE_LAYERS · 30D_TTL · ZERO_REDUNDANCY</p>
+                        <div className="flex justify-between items-center">
+                          <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">3_CACHE_LAYERS · 30D_TTL · ZERO_REDUNDANCY</p>
+                          <span className="font-mono text-[0.6rem] text-teal-terminal/50 opacity-0 group-hover:opacity-100 transition-opacity">[view]</span>
+                        </div>
                       </div>
 
                       {/* Card 6 */}
-                      <div className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300">
+                      <div
+                        className="border border-eye/10 rounded-xl p-6 bg-white/[0.02] hover:border-teal-terminal/40 transition-colors duration-300 cursor-pointer group"
+                        onClick={() => setLightboxImage('/inspect/renderproof.png')}
+                      >
                         <div className="flex items-start gap-4 mb-4">
                           <svg viewBox="0 0 48 48" className="w-10 h-10 shrink-0 mt-1" fill="none" strokeWidth="1.5">
                             <rect x="4" y="18" width="8" height="6" rx="1" stroke="rgba(255,250,235,0.4)" />
@@ -431,15 +464,18 @@ export default function Portfolio() {
                             <rect x="14" y="10" width="8" height="6" rx="1" stroke="rgba(255,250,235,0.25)" />
                             <path d="M4 28 C4 38 44 38 44 28" stroke="rgba(0,255,202,0.5)" strokeDasharray="2 1" />
                             <line x1="38" y1="28" x2="42" y2="22" stroke="rgba(0,255,202,0.4)" />
-                            <text x="34" y="20" fontSize="3" fill="#00ffca" fontFamily="monospace" opacity="0.8">RENDER</text>
+                            <text x="34" y="20" fontSize="3" fill="#00ffca" fontFamily="monospace" opacity="0.8">DEPLOY</text>
                           </svg>
                           <div>
-                            <h4 className="mono text-eye text-[0.8rem] mb-2">DOCKER + PRODUCTION DEPLOYMENT</h4>
+                            <h4 className="mono text-eye text-[0.8rem] mb-2 group-hover:text-teal-terminal transition-colors">DOCKER + PRODUCTION DEPLOYMENT</h4>
                             <p className="text-narrative text-[0.78rem] leading-relaxed">Containerized with Docker Compose and deployed to Render with auto-deploy hooks and external cron keep-alive.</p>
                           </div>
                         </div>
                         <div className="w-full h-px bg-eye/5 my-3" />
-                        <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">DOCKER_COMPOSE · RENDER · AUTO_DEPLOY</p>
+                        <div className="flex justify-between items-center">
+                          <p className="font-mono text-[0.62rem] text-eye/30 tracking-wider">DOCKER_COMPOSE · RENDER · AUTO_DEPLOY</p>
+                          <span className="font-mono text-[0.6rem] text-teal-terminal/50 opacity-0 group-hover:opacity-100 transition-opacity">[view]</span>
+                        </div>
                       </div>
 
                     </div>
@@ -512,7 +548,83 @@ export default function Portfolio() {
         )}
       </AnimatePresence>
 
-      {/* Styles for animation and masking */}
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[3000] flex items-center justify-center bg-[#0a0a0a]/90 backdrop-blur-sm p-4 md:p-12 cursor-zoom-out"
+            onClick={() => setLightboxImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl border border-eye/10 bg-black/50"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="absolute top-6 right-6 text-eye/60 hover:text-white bg-black/50 hover:bg-black/80 backdrop-blur px-4 py-2 rounded-full font-mono text-[0.7rem] tracking-widest transition-all z-50 border border-eye/10"
+                onClick={() => setLightboxImage(null)}
+              >
+                [ CLOSE ]
+              </button>
+              {lightboxImage === 'diagram-cache' ? (
+                <div className="w-full h-full bg-[#121212] p-12 flex flex-col items-center justify-center border border-eye/10">
+                  <h3 className="mono text-teal-terminal text-xl mb-12 tracking-widest">[ ARCHITECTURE_PIPELINE ]</h3>
+                  <svg viewBox="0 0 800 300" className="w-full max-w-4xl" fill="none" strokeWidth="2">
+                    {/* Nodes */}
+                    <rect x="50" y="120" width="100" height="60" rx="4" stroke="rgba(255,250,235,0.4)" className="fill-white/[0.02]" />
+                    <text x="100" y="155" textAnchor="middle" fill="rgba(255,250,235,0.6)" className="font-mono text-sm">YAML</text>
+
+                    <rect x="250" y="120" width="100" height="60" rx="8" stroke="#00ffca" className="fill-teal-terminal/5" />
+                    <text x="300" y="155" textAnchor="middle" fill="#00ffca" className="font-mono text-sm">GENERATOR</text>
+
+                    <path d="M 450 120 L 550 150 L 450 180 Z" stroke="#00ffca" className="fill-teal-terminal/5" />
+                    <text x="485" y="155" textAnchor="middle" fill="#00ffca" className="font-mono text-[10px]">VALIDATOR</text>
+
+                    <rect x="440" y="30" width="120" height="50" rx="4" stroke="rgba(255,250,235,0.3)" className="fill-white/[0.02]" strokeDasharray="4 4" />
+                    <text x="500" y="60" textAnchor="middle" fill="rgba(255,250,235,0.5)" className="font-mono text-[10px]">CACHE (HIT/MISS)</text>
+
+                    <circle cx="700" cy="150" r="40" stroke="rgba(255,250,235,0.6)" strokeDasharray="2 4" className="fill-white/[0.02]" />
+                    <text x="700" y="155" textAnchor="middle" fill="rgba(255,250,235,0.8)" className="font-mono text-sm">AI AGENT</text>
+
+                    {/* Connectors */}
+                    <path d="M 150 150 L 235 150" stroke="rgba(255,250,235,0.3)" markerEnd="url(#arrow)" />
+                    <path d="M 350 150 L 435 150" stroke="rgba(255,250,235,0.3)" markerEnd="url(#arrow)" />
+
+                    {/* Cache branches */}
+                    <path d="M 500 135 L 500 95" stroke="rgba(255,250,235,0.4)" strokeDasharray="4 4" markerEnd="url(#arrow)" />
+                    <text x="510" y="115" fill="rgba(255,250,235,0.4)" className="font-mono text-[10px]">Verify</text>
+
+                    <path d="M 545 150 L 645 150" stroke="rgba(255,250,235,0.3)" markerEnd="url(#arrow)" />
+
+                    {/* Arrowhead Def */}
+                    <defs>
+                      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255,250,235,0.4)" />
+                      </marker>
+                    </defs>
+                  </svg>
+                  <p className="text-narrative text-sm mt-8 text-center max-w-2xl text-eye/50">
+                    The validation layer intercepts all LLM requests. If the prescribed logic exists in cache (file, Mongo, memory), the AI Agent is bypassed completely, saving API costs and latency.
+                  </p>
+                </div>
+              ) : (
+                <img
+                  src={lightboxImage}
+                  alt="Technical Proof"
+                  className="w-full h-full object-contain"
+                />
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }
