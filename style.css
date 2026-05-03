@@ -54,6 +54,21 @@ body {
     gap: 1.8rem;
     z-index: 500;
     pointer-events: auto;
+    transition: all 0.8s var(--easing);
+}
+
+.contact-active .fixed-socials {
+    bottom: 25vh;
+    left: 50%;
+    translate: -50% 0;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.contact-active .fixed-socials .social-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
 }
 
 .social-icon {
@@ -98,7 +113,9 @@ body {
 #eye-container {
     width: 220px;
     height: 120px;
+    transition: transform 0.8s var(--easing);
 }
+
 
 .eye-svg {
     width: 100%;
@@ -147,7 +164,8 @@ body {
 #dynamic-name {
     font-family: 'Inter', sans-serif !important;
     font-size: 2rem;
-    font-weight: 500; /* Increased from 100 for better recognition */
+    font-weight: 500;
+    /* Increased from 100 for better recognition */
     letter-spacing: 1.2rem;
     margin-bottom: 0.5rem;
     white-space: nowrap;
@@ -294,8 +312,13 @@ body {
 
 /* Subtle Entrance Animation */
 @keyframes fadeInGraph {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .graph-content {
@@ -384,6 +407,7 @@ body {
 
 /* Final Contact Section */
 .contact-final {
+    font-family: 'Inter', sans-serif !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -414,17 +438,32 @@ body {
     align-items: flex-start;
 }
 
-.contact-label {
-    font-weight: 900;
-    font-size: 1.2rem;
+.contact-final .contact-tagline {
+    position: absolute;
+    top: -17vh;
+    /* left: 50%; */
+    right: 10vh;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.8rem !important;
+    font-weight: 400;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
     color: var(--eye-color);
-    text-decoration: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 1s var(--easing), top 1s var(--easing);
 }
 
-.contact-label:hover {
-    transform: scale(1.1);
-    opacity: 0.8;
+.in-focus .contact-tagline {
+    opacity: 0.7;
+}
+
+.contact-active .contact-links {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Node Inspect Overlay */
@@ -495,7 +534,7 @@ body {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
 }
 
 .inspect-content {
