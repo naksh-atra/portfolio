@@ -212,7 +212,7 @@ export default function Portfolio() {
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {project.tools.map((tool) => (
-                      <span key={tool} className="inline-block border border-eye/20 text-narrative text-[0.6rem] px-[10px] py-[4px] rounded-full hover:border-teal-terminal hover:text-teal-terminal transition-colors">
+                      <span key={tool} className="inline-block border border-eye/20 text-narrative text-[0.6rem] px-[10px] py-[4px] rounded-full hover:border-eye hover:text-eye transition-colors">
                         {tool}
                       </span>
                     ))}
